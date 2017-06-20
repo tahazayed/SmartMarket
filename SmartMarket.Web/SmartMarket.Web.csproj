@@ -174,7 +174,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Business\Roles.cs" />
     <Compile Include="Business\User.cs" />
-    <Compile Include="Controllers\CategoriesAPIController.cs" />
+    <Compile Include="Controllers\MobileAPIController.cs" />
     <Compile Include="Controllers\CategoriesController.cs" />
     <Compile Include="Controllers\CompaniesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
