@@ -27,18 +27,16 @@ namespace BusinessEntities
         public bool IsSystem { get; set; } = false;
 
         [Required]
-        [Index(IsUnique = true)]
         [MaxLength(256)]
         public string Email { get; set; }
 
-        [Required]
+
         [MaxLength(500)]
         [DataType(DataType.MultilineText)]
         public string Address { get; set; }
 
 
-        [Required]
-        [MaxLength(140)]
+        [MaxLength(14)]
         public string Phone { get; set; }
 
         public UserType UserType { get; set; } = UserType.Customer;

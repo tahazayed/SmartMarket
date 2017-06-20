@@ -1,4 +1,7 @@
+using System;
+using System.Data.Entity.Validation;
 using System.Linq;
+using System.Text;
 
 namespace BusinessEntities.Migrations
 {
@@ -37,21 +40,22 @@ namespace BusinessEntities.Migrations
                 Active = true,
                 Password = "RG9uJ3RMb2dpbg==-bzwUvvK6shM=", //Don'tLogin
                 UserName = "Admin",
-                IsSystem = true
+                IsSystem = true,
+                Email = "test@test.com",
             },
              new User
              {
                  Active = true,
                  Password = "RG9uJ3RMb2dpbg==-bzwUvvK6shM=", //Don'tLogin
                  UserName = "Samsung",
-                 IsSystem = true,
+                 IsSystem = false,
                  UserType = UserType.Company,
                  Email = "test@test.com",
                  Address = "nowhere",
                  Phone = "012345678"
              });
 
-            context.SaveChanges();
+            SaveChanges(context);
 
             var adminRole = (from r in context.Roles
                              where r.Roles == "Admin"
@@ -117,6 +121,33 @@ namespace BusinessEntities.Migrations
                     });
                 context.SaveChanges();
                 var smartTVSubCat = context.SubCategories.SingleOrDefault(c => c.SubCategoryName == "Smart TV");
+            }
+
+        }
+        private void SaveChanges(SmartMarketDB context)
+        {
+            try
+            {
+                context.SaveChanges();
+            }
+            catch (DbEntityValidationException ex)
+            {
+                var sb = new StringBuilder();
+
+                foreach (var failure in ex.EntityValidationErrors)
+                {
+                    sb.AppendFormat("{0} failed validation\n", failure.Entry.Entity.GetType());
+                    foreach (var error in failure.ValidationErrors)
+                    {
+                        sb.AppendFormat("- {0} : {1}", error.PropertyName, error.ErrorMessage);
+                        sb.AppendLine();
+                    }
+                }
+
+                throw new Exception(
+                    "Entity Validation Failed - errors follow:\n" +
+                    sb, ex
+                    ); // Add the original exception as the innerException
             }
         }
     }
