@@ -3,16 +3,15 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace BusinessEntities
 {
-    public class Company : CommonBaseBusinessEntity
+    public class Customer : CommonBaseBusinessEntity
     {
         [Required]
-        [StringLength(100, MinimumLength = 2)]
+        [StringLength(1000, MinimumLength = 2)]
         [Index]
 
-        public string CompanyName { get; set; }
+        public string Nikename { get; set; }
 
-        [Index]
-        public double Rate { get; set; } = 0.0;
+        public Gender Gender { get; set; } = Gender.Male;
 
         [Index]
         public long UserId { get; set; }
@@ -20,5 +19,6 @@ namespace BusinessEntities
 
         [ForeignKey(nameof(UserId))]
         public virtual User User { get; set; }
+
     }
 }

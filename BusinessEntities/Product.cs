@@ -37,6 +37,9 @@ namespace BusinessEntities
         [Required]
         public long AvailableStock { get; set; } = 0;
 
+        [Index]
+        public double Rate { get; set; } = 0.0;
+
         [Required]
         [StringLength(500)]
         [Index]

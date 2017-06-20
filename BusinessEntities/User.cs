@@ -41,5 +41,7 @@ namespace BusinessEntities
         [MaxLength(140)]
         public string Phone { get; set; }
 
+        public UserType UserType { get; set; } = UserType.Customer;
+
     }
 }
