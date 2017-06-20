@@ -178,7 +178,7 @@ namespace MadintyFacebook.Controllers
         public ActionResult Login(User user, string returnUrl)
         {
 
-            if (ModelState.IsValid)
+            //if (ModelState.IsValid)
             {
                 //string IP = Request.ServerVariables["REMOTE_ADDR"];
                 string IP = Request.UserHostAddress;
