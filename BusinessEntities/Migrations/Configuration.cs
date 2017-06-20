@@ -121,6 +121,21 @@ namespace BusinessEntities.Migrations
                     });
                 context.SaveChanges();
                 var smartTVSubCat = context.SubCategories.SingleOrDefault(c => c.SubCategoryName == "Smart TV");
+                var samsungCompany = context.Companies.SingleOrDefault(c => c.CompanyName == "Samsung");
+                context.Products.AddOrUpdate(p => new { p.ProductName, p.CompanyId },
+                new Product()
+                {
+                    ProductName = "Samsung Electronics QN55Q7C Curved 55-Inch 4K Ultra HD Smart QLED TV (2017 Model)",
+                    Description = "Samsung Electronics QN55Q7C Curved 55-Inch 4K Ultra HD Smart QLED TV (2017 Model)",
+                    CompanyId = samsungCompany.Id,
+                    SubCategoryId = smartTVSubCat.Id,
+                    Price = 44946,
+                    ImageURL = "https://images-na.ssl-images-amazon.com/images/I/41D2IDqQ51L._AC_US327_FMwebp_QL65_.jpg",
+                    Rate = 4.5,
+                    AvailableStock = 500
+
+                });
+                SaveChanges(context);
             }
 
         }

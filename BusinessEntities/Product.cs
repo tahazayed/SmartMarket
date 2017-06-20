@@ -7,12 +7,12 @@ namespace BusinessEntities
     public class Product : CommonBaseBusinessEntity
     {
         [Required]
-        [StringLength(40, MinimumLength = 2)]
+        [StringLength(500, MinimumLength = 2)]
         [Index]
 
         public string ProductName { get; set; }
 
-        [StringLength(250)]
+        [StringLength(500)]
         [DataType(DataType.MultilineText)]
         public string Description { get; set; }
 
