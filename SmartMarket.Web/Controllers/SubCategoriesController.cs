@@ -10,113 +10,113 @@ using BusinessEntities;
 
 namespace SmartMarket.Web.Controllers
 {
-    public class CompaniesController : Controller
+    public class SubCategoriesController : Controller
     {
         private SmartMarketDB db = new SmartMarketDB();
 
-        // GET: Companies
+        // GET: SubCategories
         public ActionResult Index()
         {
-            var companies = db.Companies.Include(c => c.User);
-            return View(companies.ToList());
+            var subCategories = db.SubCategories.Include(s => s.Category);
+            return View(subCategories.ToList());
         }
 
-        // GET: Companies/Details/5
+        // GET: SubCategories/Details/5
         public ActionResult Details(Guid? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Company company = db.Companies.Find(id);
-            if (company == null)
+            SubCategory subCategory = db.SubCategories.Find(id);
+            if (subCategory == null)
             {
                 return HttpNotFound();
             }
-            return View(company);
+            return View(subCategory);
         }
 
-        // GET: Companies/Create
+        // GET: SubCategories/Create
         public ActionResult Create()
         {
-            ViewBag.UserId = new SelectList(db.Users, "Id", "UserName");
+            ViewBag.CategoryId = new SelectList(db.Categories, "Id", "CategoryName");
             return View();
         }
 
-        // POST: Companies/Create
+        // POST: SubCategories/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,CompanyName,Rate,UserId")] Company company)
+        public ActionResult Create([Bind(Include = "Id,SubCategoryName,Description,CategoryId")] SubCategory subCategory)
         {
             if (ModelState.IsValid)
             {
-                company.Id = Guid.NewGuid();
-                db.Companies.Add(company);
+                subCategory.Id = Guid.NewGuid();
+                db.SubCategories.Add(subCategory);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.UserId = new SelectList(db.Users.Where(x=>x.UserType==UserType.Company), "Id", "UserName", company.UserId);
-            return View(company);
+            ViewBag.CategoryId = new SelectList(db.Categories, "Id", "CategoryName", subCategory.CategoryId);
+            return View(subCategory);
         }
 
-        // GET: Companies/Edit/5
+        // GET: SubCategories/Edit/5
         public ActionResult Edit(Guid? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Company company = db.Companies.Find(id);
-            if (company == null)
+            SubCategory subCategory = db.SubCategories.Find(id);
+            if (subCategory == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.UserId = new SelectList(db.Users.Where(x => x.UserType == UserType.Company), "Id", "UserName", company.UserId);
-            return View(company);
+            ViewBag.CategoryId = new SelectList(db.Categories, "Id", "CategoryName", subCategory.CategoryId);
+            return View(subCategory);
         }
 
-        // POST: Companies/Edit/5
+        // POST: SubCategories/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,CompanyName,Rate,UserId")] Company company)
+        public ActionResult Edit([Bind(Include = "Id,SubCategoryName,Description,CategoryId")] SubCategory subCategory)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(company).State = EntityState.Modified;
+                db.Entry(subCategory).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.UserId = new SelectList(db.Users.Where(x => x.UserType == UserType.Company), "Id", "UserName", company.UserId);
-            return View(company);
+            ViewBag.CategoryId = new SelectList(db.Categories, "Id", "CategoryName", subCategory.CategoryId);
+            return View(subCategory);
         }
 
-        // GET: Companies/Delete/5
+        // GET: SubCategories/Delete/5
         public ActionResult Delete(Guid? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Company company = db.Companies.Find(id);
-            if (company == null)
+            SubCategory subCategory = db.SubCategories.Find(id);
+            if (subCategory == null)
             {
                 return HttpNotFound();
             }
-            return View(company);
+            return View(subCategory);
         }
 
-        // POST: Companies/Delete/5
+        // POST: SubCategories/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(Guid id)
         {
-            Company company = db.Companies.Find(id);
-            db.Companies.Remove(company);
+            SubCategory subCategory = db.SubCategories.Find(id);
+            db.SubCategories.Remove(subCategory);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
