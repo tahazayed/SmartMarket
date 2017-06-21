@@ -183,6 +183,14 @@ namespace SmartMarket.Web.Controllers
             }
             return companyId;
         }
+
+        [HttpPost]
+        public ActionResult GetProdutPrice(Guid productId)
+        {
+            double pricePerItem = db.Products.SingleOrDefault(p => p.Id == productId).Price;
+
+            return Json(new { PricePerItem = pricePerItem }, JsonRequestBehavior.AllowGet);
+        }
         protected override void Dispose(bool disposing)
         {
             if (disposing)

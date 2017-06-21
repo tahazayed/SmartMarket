@@ -53,6 +53,7 @@ namespace SmartMarket.Web.Controllers
         {
             if (ModelState.IsValid)
             {
+                orderItem.PricePerItem = db.Products.SingleOrDefault(p => p.Id == orderItem.ProductId).Price;
                 orderItem.Id = Guid.NewGuid();
                 db.OrderItems.Add(orderItem);
                 db.SaveChanges();

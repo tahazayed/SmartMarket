@@ -5,7 +5,7 @@
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
         <h4>OrderItem</h4>
         <hr />
@@ -46,7 +46,7 @@
 }
 
 
-
+@Scripts.Render("~/Content/js/dllCascade.js")
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
 }
