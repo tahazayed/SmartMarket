@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Newtonsoft.Json;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace BusinessEntities
@@ -15,9 +16,10 @@ namespace BusinessEntities
         public double Rate { get; set; } = 0.0;
 
         [Index]
+        [JsonIgnore]
         public long UserId { get; set; }
 
-
+        [JsonIgnore]
         [ForeignKey(nameof(UserId))]
         public virtual User User { get; set; }
     }

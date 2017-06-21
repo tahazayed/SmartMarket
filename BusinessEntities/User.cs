@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Newtonsoft.Json;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace BusinessEntities
@@ -19,6 +20,7 @@ namespace BusinessEntities
         [Required]
         [DataType(DataType.Password)]
         [Display(Name = "Password")]
+        [JsonIgnore]
         public string Password { get; set; }
 
         [Index]

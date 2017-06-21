@@ -11,9 +11,18 @@ namespace SmartMarket.Web.Controllers
         private SmartMarketDB db = new SmartMarketDB();
 
         // GET: api/CategoriesAPI
-        public IQueryable<Category> GetCategories()
+        public IQueryable<Category> GetCategories(Guid? categoryId)
         {
-            return db.Categories;
+            IQueryable<Category> lstCategories;
+            if (categoryId.HasValue)
+            {
+                lstCategories = db.Categories.Where(c => c.Id == categoryId);
+            }
+            else
+            {
+                lstCategories = db.Categories;
+            }
+            return lstCategories.OrderBy(c => c.CategoryName);
         }
 
         [HttpGet]
