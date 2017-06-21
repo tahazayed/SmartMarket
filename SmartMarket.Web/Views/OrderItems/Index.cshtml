@@ -1,0 +1,116 @@
+﻿@model IEnumerable<BusinessEntities.OrderItem>
+
+@Styles.Render("~/Content/css")
+@Scripts.Render("~/bundles/modernizr")
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/jqueryval")
+@Scripts.Render("~/bundles/bootstrap")
+@Scripts.Render("~/Content/js/ModalDialog.js")
+
+<p>
+    @Html.ActionLink("Add Order Item", "Create", new { orderId = ViewBag.orderId }, new { btnName = "btnCreateItem", @class = "btn btn-default btn-xs" })
+</p>
+
+<table class="table">
+    <tr>
+
+        <th>
+            @Html.DisplayNameFor(model => model.Product.ProductName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Count)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PricePerItem)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.Product.ProductName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Count)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PricePerItem)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.Id }, new { btnName = "btnEditItem", @class = "btn btn-default btn-xs" })
+                @Html.ActionLink("Delete", "Delete", new { id = item.Id }, new { btnName = "btnDeleteItem", @class = "btn btn-default btn-xs" })
+            </td>
+        </tr>
+    }
+
+</table>
+<script type="text/javascript">
+    $(document)
+        .ready(function () {
+            $(function () {
+                $.ajaxSetup({ cache: false });
+
+                setDialogLink($('a[btnName=btnCreateItem]'),
+                    '',
+                    500,
+                    600,
+                    "detailFrame",
+                    "/OrderItems/Index?orderId=@ViewBag.orderId");
+                setDialogLink($('a[btnName=btnEditItem]'),
+                    '',
+                    500,
+                    600,
+                    "detailFrame",
+                    "/OrderItems/Index?orderId=@ViewBag.orderId");
+
+                $('a[btnName=btnDeleteItem]')
+                    .click(function (e) {
+                        e.preventDefault();
+                        var confirmResult = confirm("Are you sure?");
+                        if (confirmResult) {
+                            $('#detailFrame').mask("waiting ...");
+
+                            $.ajax(
+                            {
+                                url: this.href,
+                                type: 'POST',
+                                data: JSON.stringify({}),
+                                dataType: 'json',
+                                traditional: true,
+                                contentType: "application/json; charset=utf-8",
+                                success: function (data) {
+                                    if (data.success) {
+                                        $('#detailFrame')
+                                            .load("/OrderItems/Index?orderId=@ViewBag.orderId");
+                                    } else {
+
+                                        alert(data.errormessage);
+                                    }
+                                    $('#detailFrame').unmask("waiting ...");
+
+                                },
+                                error: function (data) {
+                                    alert("An error has occured!!!");
+                                    $('#detailFrame').unmask("waiting ...");
+                                }
+
+                            });
+                        }
+
+                    });
+
+
+
+
+            });
+
+
+        });
+
+
+
+
+</script>
