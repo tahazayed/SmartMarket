@@ -64,7 +64,7 @@ namespace SmartMarket.Web.Controllers
             }
             return lstProducts.OrderBy(p => p.ProductName).ThenByDescending(p => p.Rate);
         }
-        // GET: api/Products1/5
+
         [ResponseType(typeof(Product))]
         public IHttpActionResult GetProduct(Guid id)
         {
