@@ -2,15 +2,17 @@
 using System;
 using System.Linq;
 using System.Web.Http;
+using System.Web.Http.Cors;
 using System.Web.Http.Description;
 
 namespace SmartMarket.Web.Controllers
 {
-    public class MobileAPIController : ApiController
+    [EnableCors(origins: "*", headers: "*", methods: "*")]
+    public class MobileApiController : ApiController
     {
         private SmartMarketDB db = new SmartMarketDB();
 
-        // GET: api/CategoriesAPI
+
         public IQueryable<Category> GetCategories(Guid? categoryId)
         {
             IQueryable<Category> lstCategories;
@@ -23,6 +25,20 @@ namespace SmartMarket.Web.Controllers
                 lstCategories = db.Categories;
             }
             return lstCategories.OrderBy(c => c.CategoryName);
+        }
+
+        public IQueryable<Company> GetCompanies(Guid? companyId)
+        {
+            IQueryable<Company> lstCompanies;
+            if (companyId.HasValue)
+            {
+                lstCompanies = db.Companies.Where(c => c.Id == companyId);
+            }
+            else
+            {
+                lstCompanies = db.Companies;
+            }
+            return lstCompanies.OrderBy(c => c.CompanyName);
         }
 
         [HttpGet]
