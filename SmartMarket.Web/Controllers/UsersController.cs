@@ -56,7 +56,8 @@ namespace MadintyFacebook.Controllers
         // GET: Users/Create
         public ActionResult Create()
         {
-            return View();
+            var user = new User();
+            return View(user);
         }
 
         // POST: Users/Create
@@ -65,7 +66,7 @@ namespace MadintyFacebook.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize(Roles = "Admin")]
-        public ActionResult Create([Bind(Include = "ID,UserName,Password,Active")] User user)
+        public ActionResult Create([Bind(Include = "ID,UserName,Password,Active,Email,Address,Phone")] User user)
         {
             if (ModelState.IsValid)
             {
@@ -115,7 +116,7 @@ namespace MadintyFacebook.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize(Roles = "Admin")]
-        public ActionResult Edit([Bind(Include = "ID,UserName,Password,Active")] User user)
+        public ActionResult Edit([Bind(Include = "ID,UserName,Password,Active,Email,Address,Phone")] User user)
         {
             if (ModelState.IsValid && user.UserName.ToLower() != "admin")
             {
