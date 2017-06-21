@@ -1,15 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using BusinessEntities;
+using System;
 using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
-using System.Web;
 using System.Web.Mvc;
-using BusinessEntities;
 
 namespace SmartMarket.Web.Controllers
 {
+    [Authorize(Roles = "admin")]
     public class CompaniesController : Controller
     {
         private SmartMarketDB db = new SmartMarketDB();
@@ -58,7 +57,7 @@ namespace SmartMarket.Web.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.UserId = new SelectList(db.Users.Where(x=>x.UserType==UserType.Company), "Id", "UserName", company.UserId);
+            ViewBag.UserId = new SelectList(db.Users.Where(x => x.UserType == UserType.Company), "Id", "UserName", company.UserId);
             return View(company);
         }
 

@@ -1,15 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
+﻿using BusinessEntities;
+using System;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
-using System.Web;
 using System.Web.Mvc;
-using BusinessEntities;
 
 namespace SmartMarket.Web.Controllers
 {
+    [Authorize(Roles = "admin,company")]
     public class ProductsController : Controller
     {
         private SmartMarketDB db = new SmartMarketDB();

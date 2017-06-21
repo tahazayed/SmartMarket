@@ -8,6 +8,7 @@ using System.Web.Mvc;
 
 namespace SmartMarket.Web.Controllers
 {
+    [Authorize(Roles = "admin")]
     public class CustomersController : Controller
     {
         private SmartMarketDB db = new SmartMarketDB();

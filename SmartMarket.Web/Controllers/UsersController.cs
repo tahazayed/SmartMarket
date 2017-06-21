@@ -10,7 +10,7 @@ using System.Web.Security;
 
 namespace MadintyFacebook.Controllers
 {
-
+    [Authorize(Roles = "admin")]
     public class UsersController : Controller
     {
         private readonly SmartMarketDB _db = new SmartMarketDB();
