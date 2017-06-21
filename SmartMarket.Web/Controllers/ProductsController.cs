@@ -1,4 +1,5 @@
 ﻿using BusinessEntities;
+using SmartMarket.Web.Business;
 using System;
 using System.Data.Entity;
 using System.Linq;
@@ -15,7 +16,16 @@ namespace SmartMarket.Web.Controllers
         // GET: Products
         public ActionResult Index()
         {
-            var products = db.Products.Include(p => p.Company).Include(p => p.SubCategory);
+            IQueryable<Product> products;
+            var companyId = GetUserCompanyId();
+            if (companyId != Guid.Empty)
+            {
+                products = db.Products.Include(p => p.Company).Include(p => p.SubCategory).Where(p => p.CompanyId == companyId);
+            }
+            else
+            {
+                products = db.Products.Include(p => p.Company).Include(p => p.SubCategory);
+            }
             return View(products.ToList());
         }
 
@@ -37,9 +47,18 @@ namespace SmartMarket.Web.Controllers
         // GET: Products/Create
         public ActionResult Create()
         {
-            ViewBag.CompanyId = new SelectList(db.Companies, "Id", "CompanyName");
+            var product = new Product();
+            var companyId = GetUserCompanyId();
+            if (companyId != Guid.Empty)
+            {
+                ViewBag.CompanyId = new SelectList(db.Companies.Where(c => c.Id == companyId), "Id", "CompanyName");
+            }
+            else
+            {
+                ViewBag.CompanyId = new SelectList(db.Companies, "Id", "CompanyName");
+            }
             ViewBag.SubCategoryId = new SelectList(db.SubCategories, "Id", "SubCategoryName");
-            return View();
+            return View(product);
         }
 
         // POST: Products/Create
@@ -56,8 +75,16 @@ namespace SmartMarket.Web.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+            var companyId = GetUserCompanyId();
+            if (companyId != Guid.Empty)
+            {
+                ViewBag.CompanyId = new SelectList(db.Companies.Where(c => c.Id == companyId), "Id", "CompanyName", product.CompanyId);
+            }
+            else
+            {
+                ViewBag.CompanyId = new SelectList(db.Companies, "Id", "CompanyName", product.CompanyId);
+            }
 
-            ViewBag.CompanyId = new SelectList(db.Companies, "Id", "CompanyName", product.CompanyId);
             ViewBag.SubCategoryId = new SelectList(db.SubCategories, "Id", "SubCategoryName", product.SubCategoryId);
             return View(product);
         }
@@ -74,7 +101,16 @@ namespace SmartMarket.Web.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.CompanyId = new SelectList(db.Companies, "Id", "CompanyName", product.CompanyId);
+            var companyId = GetUserCompanyId();
+            if (companyId != Guid.Empty)
+            {
+                ViewBag.CompanyId = new SelectList(db.Companies.Where(c => c.Id == companyId), "Id", "CompanyName", product.CompanyId);
+            }
+            else
+            {
+                ViewBag.CompanyId = new SelectList(db.Companies, "Id", "CompanyName", product.CompanyId);
+            }
+
             ViewBag.SubCategoryId = new SelectList(db.SubCategories, "Id", "SubCategoryName", product.SubCategoryId);
             return View(product);
         }
@@ -92,7 +128,15 @@ namespace SmartMarket.Web.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.CompanyId = new SelectList(db.Companies, "Id", "CompanyName", product.CompanyId);
+            var companyId = GetUserCompanyId();
+            if (companyId != Guid.Empty)
+            {
+                ViewBag.CompanyId = new SelectList(db.Companies.Where(c => c.Id == companyId), "Id", "CompanyName", product.CompanyId);
+            }
+            else
+            {
+                ViewBag.CompanyId = new SelectList(db.Companies, "Id", "CompanyName", product.CompanyId);
+            }
             ViewBag.SubCategoryId = new SelectList(db.SubCategories, "Id", "SubCategoryName", product.SubCategoryId);
             return View(product);
         }
@@ -123,6 +167,22 @@ namespace SmartMarket.Web.Controllers
             return RedirectToAction("Index");
         }
 
+        private Guid GetUserCompanyId()
+        {
+            Guid companyId = Guid.Empty;
+            Roles oRoles = new Roles();
+            if (oRoles.IsUserInRole(User.Identity.Name, "Company"))
+            {
+                var oUser = new SmartMarket.Web.Business.User();
+                long userId = oUser.GetUserId(User.Identity.Name);
+                var oCompany = db.Companies.SingleOrDefault(c => c.UserId == userId);
+                if (oCompany != default(Company))
+                {
+                    companyId = oCompany.Id;
+                }
+            }
+            return companyId;
+        }
         protected override void Dispose(bool disposing)
         {
             if (disposing)

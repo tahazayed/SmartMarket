@@ -39,8 +39,12 @@
                             <li>@Html.ActionLink("Customers", "Index", "Customers")</li>
                             <li>@Html.ActionLink("Categories", "Index", "Categories")</li>
                             <li>@Html.ActionLink("SubCategories", "Index", "SubCategories")</li>
-                            <li>@Html.ActionLink("Products", "Index", "Products")</li>
+
                             <li>@Html.ActionLink("Orders", "Index", "Orders")</li>
+                        }
+                        if (Roles.IsUserInRole("Admin") || Roles.IsUserInRole("Company"))
+                        {
+                            <li>@Html.ActionLink("Products", "Index", "Products")</li>
                         }
 
                     }
