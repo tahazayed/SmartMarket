@@ -8,116 +8,114 @@ using System.Web.Mvc;
 
 namespace SmartMarket.Web.Controllers
 {
-    public class OrdersController : Controller
+    public class CustomersController : Controller
     {
         private SmartMarketDB db = new SmartMarketDB();
 
-        // GET: Orders
+        // GET: Customers
         public ActionResult Index()
         {
-            var orders = db.Orders.Include(o => o.Customer);
-            return View(orders.ToList());
+            var customers = db.Customers.Include(c => c.User).Where(c => c.User.UserType == UserType.Customer);
+            return View(customers.ToList());
         }
 
-        // GET: Orders/Details/5
+        // GET: Customers/Details/5
         public ActionResult Details(Guid? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Order order = db.Orders.Find(id);
-            if (order == null)
+            Customer customer = db.Customers.Find(id);
+            if (customer == null)
             {
                 return HttpNotFound();
             }
-            return View(order);
+            return View(customer);
         }
 
-        // GET: Orders/Create
+        // GET: Customers/Create
         public ActionResult Create()
         {
-            var order = new Order();
-
-            ViewBag.CustomerId = new SelectList(db.Customers.Where(c => c.User.UserType == UserType.Customer), "Id", "Nikename");
-            return View(order);
+            var customer = new Customer();
+            ViewBag.UserId = new SelectList(db.Users.Where(c => c.UserType == UserType.Customer), "Id", "UserName");
+            return View(customer);
         }
 
-        // POST: Orders/Create
+        // POST: Customers/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,CustomerId,OrderDate,IsDelivered,DeliveredDate")] Order order)
+        public ActionResult Create([Bind(Include = "Id,Nikename,Gender,UserId")] Customer customer)
         {
             if (ModelState.IsValid)
             {
-                order.Id = Guid.NewGuid();
-                db.Orders.Add(order);
+                customer.Id = Guid.NewGuid();
+                db.Customers.Add(customer);
                 db.SaveChanges();
-                return RedirectToAction("Edit", new { Id = order.Id });
-
+                return RedirectToAction("Index");
             }
 
-            ViewBag.CustomerId = new SelectList(db.Customers.Where(c => c.User.UserType == UserType.Customer), "Id", "Nikename", order.CustomerId);
-            return View(order);
+            ViewBag.UserId = new SelectList(db.Users.Where(c => c.UserType == UserType.Customer), "Id", "UserName", customer.UserId);
+            return View(customer);
         }
 
-        // GET: Orders/Edit/5
+        // GET: Customers/Edit/5
         public ActionResult Edit(Guid? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Order order = db.Orders.Find(id);
-            if (order == null)
+            Customer customer = db.Customers.Find(id);
+            if (customer == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.CustomerId = new SelectList(db.Customers.Where(c => c.User.UserType == UserType.Customer), "Id", "Nikename", order.CustomerId);
-            return View(order);
+            ViewBag.UserId = new SelectList(db.Users.Where(c => c.UserType == UserType.Customer), "Id", "UserName", customer.UserId);
+            return View(customer);
         }
 
-        // POST: Orders/Edit/5
+        // POST: Customers/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,CustomerId,OrderDate,IsDelivered,DeliveredDate")] Order order)
+        public ActionResult Edit([Bind(Include = "Id,Nikename,Gender,UserId")] Customer customer)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(order).State = EntityState.Modified;
+                db.Entry(customer).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.CustomerId = new SelectList(db.Customers.Where(c => c.User.UserType == UserType.Customer), "Id", "Nikename", order.CustomerId);
-            return View(order);
+            ViewBag.UserId = new SelectList(db.Users.Where(c => c.UserType == UserType.Customer), "Id", "UserName", customer.UserId);
+            return View(customer);
         }
 
-        // GET: Orders/Delete/5
+        // GET: Customers/Delete/5
         public ActionResult Delete(Guid? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Order order = db.Orders.Find(id);
-            if (order == null)
+            Customer customer = db.Customers.Find(id);
+            if (customer == null)
             {
                 return HttpNotFound();
             }
-            return View(order);
+            return View(customer);
         }
 
-        // POST: Orders/Delete/5
+        // POST: Customers/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(Guid id)
         {
-            Order order = db.Orders.Find(id);
-            db.Orders.Remove(order);
+            Customer customer = db.Customers.Find(id);
+            db.Customers.Remove(customer);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

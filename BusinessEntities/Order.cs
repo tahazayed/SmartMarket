@@ -15,7 +15,7 @@ namespace BusinessEntities
         public virtual Customer Customer { get; set; }
 
 
-        public DateTime OrderDate { get; set; }
+        public DateTime OrderDate { get; set; } = DateTime.Now;
         public bool IsDelivered { get; set; } = false;
 
 
