@@ -34,7 +34,7 @@ namespace SmartMarket.Web.Business
                         authenticated = true;
                     }
                 }
-                catch (Exception ex)
+                catch
                 {
                     authenticated = false;
                 }

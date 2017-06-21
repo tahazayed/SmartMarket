@@ -84,7 +84,7 @@ namespace MadintyFacebook.Controllers
 
                         return RedirectToAction("Index");
                     }
-                    catch (Exception ex)
+                    catch
                     {
                         dbContextTransaction.Rollback();
                     }
