@@ -1,6 +1,10 @@
 ﻿using BusinessEntities;
+using SmartMarket.Web.Business;
+using SmartMarket.Web.Helpers;
 using System;
+using System.Data.Entity;
 using System.Linq;
+using System.Web;
 using System.Web.Http;
 using System.Web.Http.Cors;
 using System.Web.Http.Description;
@@ -75,6 +79,55 @@ namespace SmartMarket.Web.Controllers
             }
 
             return Ok(product);
+        }
+
+        public IQueryable<SubCategory> GetSubCategories(Guid categoryId)
+        {
+            return db.SubCategories.Where(c => c.CategoryId == categoryId).OrderBy(c => c.SubCategoryName);
+        }
+
+        [AllowAnonymous]
+        [HttpGet]
+        public IHttpActionResult Login(string userName, string password)
+        {
+            string IP = HttpContext.Current.Request.UserHostAddress;
+            SmartMarket.Web.Business.User _user = new SmartMarket.Web.Business.User();
+            if (_user.Authenticate(userName, password, IP))
+            {
+                Roles oRoles = new Roles();
+                if (oRoles.IsUserInRole(userName, "Customer"))
+                {
+
+                    return Json(new { success = true, Message = "", UserId = _user.GetUserId(userName) });
+                }
+
+                return Json(new { success = false, Message = "no a customer", UserId = -1 });
+            }
+
+            return Json(new { success = false, Message = "Invalid username or password", UserId = -1 });
+
+        }
+
+        public IHttpActionResult Singup(BusinessEntities.User user)
+        {
+            try
+            {
+                using (SmartMarketDB _db = new SmartMarketDB())
+                {
+                    string encodedPassword = TextEncoding.EncodeString(user.Password);
+                    user.Password = encodedPassword;
+                    _db.Entry(user).State = EntityState.Modified;
+                    _db.SaveChanges();
+                    Business.User _user = new Business.User();
+                    return Json(new { success = true, Message = "", UserId = _user.GetUserId(user.UserName) });
+                }
+            }
+            catch (Exception ex)
+            {
+
+                return Json(new { success = false, Message = ex.Message, UserId = -1 });
+            }
+
         }
 
         protected override void Dispose(bool disposing)
