@@ -86,7 +86,8 @@ namespace BusinessEntities.Migrations
             new Company()
             {
                 CompanyName = "Samsung",
-                UserId = samsungUser.Id
+                UserId = samsungUser.Id,
+                ImageURL = "http://s7d2.scene7.com/is/image/SamsungUS/samsung-logo-191-1"
             });
 
             context.Categories.AddOrUpdate(p => p.CategoryName,

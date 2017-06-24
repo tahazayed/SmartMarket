@@ -22,5 +22,7 @@ namespace BusinessEntities
         [JsonIgnore]
         [ForeignKey(nameof(UserId))]
         public virtual User User { get; set; }
+
+        public string ImageURL { get; set; }
     }
 }
