@@ -74,6 +74,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Role.cs" />
     <Compile Include="SmartMarketDB.cs" />
+    <Compile Include="SmartMarketDB.Views.cs" />
     <Compile Include="SubCategory.cs" />
     <Compile Include="User.cs" />
     <Compile Include="UserRole.cs" />

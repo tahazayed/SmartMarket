@@ -8,15 +8,17 @@ using System.Web;
 using System.Web.Http;
 using System.Web.Http.Cors;
 using System.Web.Http.Description;
+using WebApi.OutputCache.V2;
 
 namespace SmartMarket.Web.Controllers
 {
     [EnableCors(origins: "*", headers: "*", methods: "*")]
+    [AutoInvalidateCacheOutput]
     public class MobileApiController : ApiController
     {
         private SmartMarketDB db = new SmartMarketDB();
 
-
+        [CacheOutput(ClientTimeSpan = 300, ServerTimeSpan = 300)]
         public IQueryable<Category> GetCategories(Guid? categoryId)
         {
             IQueryable<Category> lstCategories;
@@ -31,6 +33,7 @@ namespace SmartMarket.Web.Controllers
             return lstCategories.OrderBy(c => c.CategoryName);
         }
 
+        [CacheOutput(ClientTimeSpan = 300, ServerTimeSpan = 300)]
         public IQueryable<Company> GetCompanies(Guid? companyId)
         {
             IQueryable<Company> lstCompanies;
@@ -46,6 +49,7 @@ namespace SmartMarket.Web.Controllers
         }
 
         [HttpGet]
+        [CacheOutput(ClientTimeSpan = 300, ServerTimeSpan = 300)]
         [Route("api/MobileAPI/GetProducts", Name = "GetProducts")]
         public IQueryable<Product> GetProducts(Guid? categoryId, Guid? companyId, string search = "")
         {
@@ -70,6 +74,7 @@ namespace SmartMarket.Web.Controllers
         }
 
         [ResponseType(typeof(Product))]
+        [CacheOutput(ClientTimeSpan = 300, ServerTimeSpan = 300)]
         public IHttpActionResult GetProduct(Guid id)
         {
             Product product = db.Products.Find(id);
@@ -81,6 +86,7 @@ namespace SmartMarket.Web.Controllers
             return Ok(product);
         }
 
+        [CacheOutput(ClientTimeSpan = 300, ServerTimeSpan = 300)]
         public IQueryable<SubCategory> GetSubCategories(Guid categoryId)
         {
             return db.SubCategories.Where(c => c.CategoryId == categoryId).OrderBy(c => c.SubCategoryName);
