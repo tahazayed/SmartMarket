@@ -1,0 +1,1 @@
+http://tmgholding-001-site20.dtempurl.com/api/MobileAPI/GetCompanyCategories?companyId=CEADBC35-CA55-E711-9D21-4485002C4EFC

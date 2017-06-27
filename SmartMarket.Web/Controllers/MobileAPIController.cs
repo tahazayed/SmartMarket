@@ -32,6 +32,22 @@ namespace SmartMarket.Web.Controllers
             }
             return lstCategories.OrderBy(c => c.CategoryName);
         }
+        [CacheOutput(ClientTimeSpan = 300, ServerTimeSpan = 300)]
+        public IQueryable<Category> GetCompanyCategories(Guid companyId)
+        {
+            IQueryable<Category> lstCategories;
+
+            lstCategories = (from p in db.Products
+                             join sc in db.SubCategories
+                             on p.SubCategoryId equals sc.Id
+                             join c in db.Categories
+                             on sc.CategoryId equals c.Id
+                             where p.CompanyId == companyId
+                             select c).Distinct();
+
+
+            return lstCategories.OrderBy(c => c.CategoryName);
+        }
 
         [CacheOutput(ClientTimeSpan = 300, ServerTimeSpan = 300)]
         public IQueryable<Company> GetCompanies(Guid? companyId)
