@@ -1,4 +1,8 @@
-﻿function setDialogLink(element, dialogTitle, dialogHeight, dialogWidth, updateTargetId, updateUrl) {
+﻿$.ajaxPrefilter(function (options, original_Options, jqXHR) {
+    options.async = true;
+});
+
+function setDialogLink(element, dialogTitle, dialogHeight, dialogWidth, updateTargetId, updateUrl) {
 
 
     // Wire up the click event of any dialog links
