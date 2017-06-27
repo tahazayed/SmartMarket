@@ -271,7 +271,9 @@
     <Content Include="Pics\Beryti.jpg" />
     <Content Include="Pics\Cadbury-Dairy-Milk-Bar-Chocolate.jpg" />
     <Content Include="Pics\capore.jpg" />
+    <Content Include="Pics\crunchy.jpg" />
     <Content Include="Pics\elArossaTee.jpg" />
+    <Content Include="Pics\Fayez.jpg" />
     <Content Include="Pics\galaxy.jpg" />
     <Content Include="Pics\glaxy2.jpg" />
     <Content Include="Pics\item_XL_17513505_28595696.jpg" />
@@ -279,6 +281,9 @@
     <Content Include="Pics\lebtontee25.jpg" />
     <Content Include="Pics\pepsi_soft_drink_large_pet_2litre_1-500x500.jpg" />
     <Content Include="Pics\rani.jpg" />
+    <Content Include="Pics\star.jpg" />
+    <Content Include="Pics\startpasta.jpg" />
+    <Content Include="Pics\Thermos.jpg" />
     <Content Include="Pics\Tide4k.jpg" />
     <Content Include="Pics\yyy-370x310.jpg" />
     <Content Include="Scripts\bootstrap.js" />
