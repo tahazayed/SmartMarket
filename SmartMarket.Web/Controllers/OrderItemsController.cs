@@ -41,6 +41,7 @@ namespace SmartMarket.Web.Controllers
             var orderItem = new OrderItem() { OrderId = orderId };
             ViewBag.OrderId = new SelectList(db.Orders, "Id", "Id");
             ViewBag.ProductId = new SelectList(db.Products, "Id", "ProductName");
+            orderItem.Count = 1;
             return View(orderItem);
         }
 

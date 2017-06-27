@@ -9,7 +9,7 @@ function setDialogLink(element, dialogTitle, dialogHeight, dialogWidth, updateTa
     element.on('click', function () {
 
         // Generate a unique id for the dialog div
-        var dialogId = 'uniqueName-' + Math.floor(Math.random() * 1000)
+        var dialogId = 'uniqueName-' + Math.floor(Math.random() * 1000);
         var dialogDiv = "<div id='" + dialogId + "' class='ui-widget-overlay'></div>";
 
         // Load the form into the dialog div
@@ -20,12 +20,12 @@ function setDialogLink(element, dialogTitle, dialogHeight, dialogWidth, updateTa
                 title: dialogTitle,
                 height: dialogHeight,
                 width: dialogWidth,
-                open: function() {
+                open: function () {
                     $('.ui-widget-overlay').addClass('custom-overlay');
                 },
-                close: function() {
+                close: function () {
                     $('.ui-widget-overlay').removeClass('custom-overlay');
-                }    ,
+                },
                 buttons: {
                     "Save": function () {
                         // Manually submit the form
