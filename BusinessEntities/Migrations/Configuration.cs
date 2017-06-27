@@ -1,5 +1,8 @@
+using Newtonsoft.Json;
 using System;
+using System.Collections.Generic;
 using System.Data.Entity.Validation;
+using System.IO;
 using System.Linq;
 using System.Text;
 
@@ -53,6 +56,17 @@ namespace BusinessEntities.Migrations
                  Email = "test@test.com",
                  Address = "nowhere",
                  Phone = "012345678"
+             },
+             new User
+             {
+                 Active = true,
+                 Password = "RG9uJ3RMb2dpbg==-bzwUvvK6shM=", //Don'tLogin
+                 UserName = "metro",
+                 IsSystem = false,
+                 UserType = UserType.Company,
+                 Email = "test@test.com",
+                 Address = "nowhere",
+                 Phone = "012345678"
              });
 
             SaveChanges(context);
@@ -70,6 +84,9 @@ namespace BusinessEntities.Migrations
             var samsungUser = (from r in context.Users
                                where r.UserName == "Samsung"
                                select r).SingleOrDefault();
+            var metroUser = (from r in context.Users
+                             where r.UserName == "metro"
+                             select r).SingleOrDefault();
             context.UserRoles.AddOrUpdate(r => new { r.RoleId, r.UserId }, new UserRole
             {
                 RoleId = adminRole.Id,
@@ -79,6 +96,10 @@ namespace BusinessEntities.Migrations
             {
                 RoleId = companyRole.Id,
                 UserId = samsungUser.Id
+            }, new UserRole
+            {
+                RoleId = companyRole.Id,
+                UserId = metroUser.Id
             });
             context.SaveChanges();
 
@@ -88,7 +109,13 @@ namespace BusinessEntities.Migrations
                 CompanyName = "Samsung",
                 UserId = samsungUser.Id,
                 ImageURL = "http://s7d2.scene7.com/is/image/SamsungUS/samsung-logo-191-1"
-            });
+            },
+             new Company()
+             {
+                 CompanyName = "Metro",
+                 UserId = metroUser.Id,
+                 ImageURL = "http://www.mansourgroup.com/Cms_Data/Sites/Mansour/Themes/assets/img/Metro.jpg"
+             });
 
             context.Categories.AddOrUpdate(p => p.CategoryName,
                 new Category()
@@ -139,6 +166,15 @@ namespace BusinessEntities.Migrations
                 SaveChanges(context);
             }
 
+            var smpleProductsString = ReadFileContent("simpleProducts.json");
+            var ldtSimpleProducts = JsonConvert.DeserializeObject<List<SimpleProduct>>(smpleProductsString);
+
+
+            foreach (var simpleProduct in ldtSimpleProducts)
+            {
+
+            }
+
         }
         private void SaveChanges(SmartMarketDB context)
         {
@@ -164,6 +200,16 @@ namespace BusinessEntities.Migrations
                     "Entity Validation Failed - errors follow:\n" +
                     sb, ex
                     ); // Add the original exception as the innerException
+            }
+        }
+        private static string ReadFileContent(string fileName)
+        {
+            var projpath = new Uri(Path.Combine(new[] { AppDomain.CurrentDomain.BaseDirectory, "..\\.." })).AbsolutePath;
+            var projPathString = Uri.UnescapeDataString(projpath);
+            using (var reader = new StreamReader(projPathString + "\\Data\\" + fileName))
+            {
+                return reader.ReadToEnd();
+                ;
             }
         }
     }
