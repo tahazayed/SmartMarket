@@ -1,413 +1,410 @@
 [
 	{
-		"CategoryName ": "Detergents",
-		"SubCategoryName": "cleaning detergent",
-		"ProductName": "Tide",
-		"Price": "59.99",
-		"Description ": "Washing Powder Automatic Jasmine 4 Kg",
-		"ImageURL ": "http://tmgholding-001-site20.dtempurl.com/pics/Tide4k.jpg"
+		"CategoryName":"Detergents",
+		"SubCategoryName":"cleaning detergent",
+		"ProductName":"Tide",
+		"Price":"59.99",
+		"Description":"Washing Powder Automatic Jasmine 4 Kg",
+		"ImageURL":"http://tmgholding-001-site20.dtempurl.com/pics/Tide4k.jpg"
 	},
 	{
-		"CategoryName ": "Detergents",
-		"SubCategoryName": "cleaning detergent",
-		"ProductName": "Arile",
-		"Price": "65.989999999999995",
-		"Description ": "Washing Powder Automatic Jasmine 3 Kg",
-		"ImageURL ": "http://tmgholding-001-site20.dtempurl.com/pics/Arile3k.png"
+		"CategoryName":"Detergents",
+		"SubCategoryName":"cleaning detergent",
+		"ProductName":"Arile",
+		"Price":"65.989999999999995",
+		"Description":"Washing Powder Automatic Jasmine 3 Kg",
+		"ImageURL":"http://tmgholding-001-site20.dtempurl.com/pics/Arile3k.png"
 	},
 	{
-		"CategoryName ": "Detergents",
-		"SubCategoryName": "cleaning detergent",
-		"ProductName": "Arile",
-		"Price": "165.99",
-		"Description ": "Washing Powder Automatic Jasmine 8 Kg",
-		"ImageURL ": "http://www.jawlany.com/wp-content/uploads/2014/11/Arial-8k.jpg"
+		"CategoryName":"Detergents",
+		"SubCategoryName":"cleaning detergent",
+		"ProductName":"Arile",
+		"Price":"165.99",
+		"Description":"Washing Powder Automatic Jasmine 8 Kg",
+		"ImageURL":"http://www.jawlany.com/wp-content/uploads/2014/11/Arial-8k.jpg"
 	},
 	{
-		"CategoryName ": "Detergents",
-		"SubCategoryName": "cleaning detergent",
-		"ProductName": "OXI",
-		"Price": "110.75",
-		"Description ": "Washing Powder Automatic Jasmine 8 Kg",
-		"ImageURL ": "http://alrawyshop.com/image/cache/data/1baby/244-370x310.png"
+		"CategoryName":"Detergents",
+		"SubCategoryName":"cleaning detergent",
+		"ProductName":"OXI",
+		"Price":"110.75",
+		"Description":"Washing Powder Automatic Jasmine 8 Kg",
+		"ImageURL":"http://alrawyshop.com/image/cache/data/1baby/244-370x310.png"
 	},
 	{
-		"CategoryName ": "Detergents",
-		"SubCategoryName": "cleaning detergent",
-		"ProductName": "Persile",
-		"Price": "188",
-		"Description ": "Washing Powder Automatic Jasmine 6 Kg",
-		"ImageURL ": "https://xormarket.com/index/1111/-6-.jpg"
+		"CategoryName":"Detergents",
+		"SubCategoryName":"cleaning detergent",
+		"ProductName":"Persile",
+		"Price":"188",
+		"Description":"Washing Powder Automatic Jasmine 6 Kg",
+		"ImageURL":"https://xormarket.com/index/1111/-6-.jpg"
 	},
 	{
-		"CategoryName ": "Detergents",
-		"SubCategoryName": "cleaning detergent",
-		"ProductName": "Persile",
-		"Price": "210",
-		"Description ": "Washing Powder Automatic Jasmine 8 Kg",
-		"ImageURL ": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQPc9MpFtyoy3-IYggfIbWir2WGMnxtk6R6la7WsKvovQ3tXaRz"
+		"CategoryName":"Detergents",
+		"SubCategoryName":"cleaning detergent",
+		"ProductName":"Persile",
+		"Price":"210",
+		"Description":"Washing Powder Automatic Jasmine 8 Kg",
+		"ImageURL":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQPc9MpFtyoy3-IYggfIbWir2WGMnxtk6R6la7WsKvovQ3tXaRz"
 	},
 	{
-		"CategoryName ": "Detergents",
-		"SubCategoryName": "Cleaner fluid",
-		"ProductName": "Pril",
-		"Price": "29.95",
-		"Description ": "Dishwashing liquid 3 liter",
-		"ImageURL ": "https://cf2.s3.souqcdn.com/item/2015/10/22/93/51/30/6/item_XL_9351306_10214169.jpg"
+		"CategoryName":"Detergents",
+		"SubCategoryName":"Cleaner fluid",
+		"ProductName":"Pril",
+		"Price":"29.95",
+		"Description":"Dishwashing liquid 3 liter",
+		"ImageURL":"https://cf2.s3.souqcdn.com/item/2015/10/22/93/51/30/6/item_XL_9351306_10214169.jpg"
 	},
 	{
-		"CategoryName ": "Detergents",
-		"SubCategoryName": "Cleaner fluid",
-		"ProductName": "General",
-		"Price": "11.25",
-		"Description ": "Dishwashing liquid 0.750 liter",
-		"ImageURL ": "http://img.dooyoo.de/DE_DE/orig/2/0/7/1/9/2071950.jpg"
+		"CategoryName":"Detergents",
+		"SubCategoryName":"Cleaner fluid",
+		"ProductName":"General",
+		"Price":"11.25",
+		"Description":"Dishwashing liquid 0.750 liter",
+		"ImageURL":"http://img.dooyoo.de/DE_DE/orig/2/0/7/1/9/2071950.jpg"
 	},
 	{
-		"CategoryName ": "Detergents",
-		"SubCategoryName": "Cleaner fluid",
-		"ProductName": "general",
-		"Price": "25.95",
-		"Description ": "Dishwashing liquid 2 liter",
-		"ImageURL ": "https://cf2.s3.souqcdn.com/item/2017/03/09/22/18/63/50/item_XL_22186350_29655496.jpg"
+		"CategoryName":"Detergents",
+		"SubCategoryName":"Cleaner fluid",
+		"ProductName":"general",
+		"Price":"25.95",
+		"Description":"Dishwashing liquid 2 liter",
+		"ImageURL":"https://cf2.s3.souqcdn.com/item/2017/03/09/22/18/63/50/item_XL_22186350_29655496.jpg"
 	},
 	{
-		"CategoryName ": "Detergents",
-		"SubCategoryName": "Cleaner fluid",
-		"ProductName": "Pril",
-		"Price": "11.25",
-		"Description ": "Dishwashing liquid 0.750 liter",
-		"ImageURL ": "https://cf2.s3.souqcdn.com/item/2015/10/22/93/51/30/9/item_XL_9351309_10214178.jpg"
+		"CategoryName":"Detergents",
+		"SubCategoryName":"Cleaner fluid",
+		"ProductName":"Pril",
+		"Price":"11.25",
+		"Description":"Dishwashing liquid 0.750 liter",
+		"ImageURL":"https://cf2.s3.souqcdn.com/item/2015/10/22/93/51/30/9/item_XL_9351309_10214178.jpg"
 	},
 	{
-		"CategoryName ": "Detergents",
-		"SubCategoryName": "Cleaner fluid",
-		"ProductName": "Pril",
-		"Price": "60",
-		"Description ": "Dishwashing liquid 6 liter",
-		"ImageURL ": "https://cf1.s3.souqcdn.com/item/2015/10/22/93/51/30/6/item_XL_9351306_10214169.jpg"
+		"CategoryName":"Detergents",
+		"SubCategoryName":"Cleaner fluid",
+		"ProductName":"Pril",
+		"Price":"60",
+		"Description":"Dishwashing liquid 6 liter",
+		"ImageURL":"https://cf1.s3.souqcdn.com/item/2015/10/22/93/51/30/6/item_XL_9351306_10214169.jpg"
 	},
 	{
-		"CategoryName ": "Detergents",
-		"SubCategoryName": "Cleaner fluid",
-		"ProductName": "general",
-		"Price": "80",
-		"Description ": "Dishwashing liquid 8 liter",
-		"ImageURL ": "https://images-na.ssl-images-amazon.com/images/I/41ThppSAo3L._SY355_.jpg"
+		"CategoryName":"Detergents",
+		"SubCategoryName":"Cleaner fluid",
+		"ProductName":"general",
+		"Price":"80",
+		"Description":"Dishwashing liquid 8 liter",
+		"ImageURL":"https://images-na.ssl-images-amazon.com/images/I/41ThppSAo3L._SY355_.jpg"
 	},
 	{
-		"CategoryName ": "Detergents",
-		"SubCategoryName": "soap",
-		"ProductName": "Detol",
-		"Price": "20.5",
-		"Description ": "Facial Wash Soap 4 pieces 90 gm",
-		"ImageURL ": "http://www.kuwaitprices.com/modules/products/images/thumb/1748_det.jpg"
+		"CategoryName":"Detergents",
+		"SubCategoryName":"Soap",
+		"ProductName":"Detol",
+		"Price":"20.5",
+		"Description":"Facial Wash Soap 4 pieces 90 gm",
+		"ImageURL":"http://www.kuwaitprices.com/modules/products/images/thumb/1748_det.jpg"
 	},
 	{
-		"CategoryName ": "Detergents",
-		"SubCategoryName": "soap",
-		"ProductName": "CAMAY",
-		"Price": "17.95",
-		"Description ": "Facial Wash Soap 4 pieces 125 gm",
-		"ImageURL ": "http://www.mtjre.com/upload/image_1340969656.jpeg"
+		"CategoryName":"Detergents",
+		"SubCategoryName":"Soap",
+		"ProductName":"CAMAY",
+		"Price":"17.95",
+		"Description":"Facial Wash Soap 4 pieces 125 gm",
+		"ImageURL":"http://www.mtjre.com/upload/image_1340969656.jpeg"
 	},
 	{
-		"CategoryName ": "Detergents",
-		"SubCategoryName": "soap",
-		"ProductName": "Lux",
-		"Price": "18.95",
-		"Description ": "Facial Wash Soap 4 pieces 125 gm",
-		"ImageURL ": "http://the-superbasket.com/UP/DSC00260.JPG_s.jpg"
+		"CategoryName":"Detergents",
+		"SubCategoryName":"Soap",
+		"ProductName":"Lux",
+		"Price":"18.95",
+		"Description":"Facial Wash Soap 4 pieces 125 gm",
+		"ImageURL":"http://the-superbasket.com/UP/DSC00260.JPG_s.jpg"
 	},
 	{
-		"CategoryName ": "Detergents",
-		"SubCategoryName": "soap",
-		"ProductName": "Dove",
-		"Price": "20.5",
-		"Description ": "Facial Wash Soap 4 pieces 90 gm",
-		"ImageURL ": "http://qahwatalsaba7.com/wp-content/uploads/2016/11/Dove-Gentle-Exfoliating-Soap.jpg"
+		"CategoryName":"Detergents",
+		"SubCategoryName":"Soap",
+		"ProductName":"Dove",
+		"Price":"20.5",
+		"Description":"Facial Wash Soap 4 pieces 90 gm",
+		"ImageURL":"http://qahwatalsaba7.com/wp-content/uploads/2016/11/Dove-Gentle-Exfoliating-Soap.jpg"
 	},
 	{
-		"CategoryName ": "Drinks",
-		"SubCategoryName": "Hot Drinks",
-		"ProductName": "EL Arossa tea",
-		"Price": "35.5",
-		"Description ": "Soft Wafer Tea 100 Packets",
-		"ImageURL ": "http://tmgholding-001-site20.dtempurl.com/pics/elArossaTee.jpg"
+		"CategoryName":"Drinks",
+		"SubCategoryName":"Hot Drinks",
+		"ProductName":"EL Arossa tea",
+		"Price":"35.5",
+		"Description":"Soft Wafer Tea 100 Packets",
+		"ImageURL":"http://tmgholding-001-site20.dtempurl.com/pics/elArossaTee.jpg"
 	},
 	{
-		"CategoryName ": "Drinks",
-		"SubCategoryName": "Hot Drinks",
-		"ProductName": "Lipton tea",
-		"Price": "40.950000000000003",
-		"Description ": "Soft Wafer Tea 100 Packets",
-		"ImageURL ": "http://tmgholding-001-site20.dtempurl.com/pics/lebtontee.PNG"
+		"CategoryName":"Drinks",
+		"SubCategoryName":"Hot Drinks",
+		"ProductName":"Lipton tea",
+		"Price":"40.950000000000003",
+		"Description":"Soft Wafer Tea 100 Packets",
+		"ImageURL":"http://tmgholding-001-site20.dtempurl.com/pics/lebtontee.PNG"
 	},
 	{
-		"CategoryName ": "Drinks",
-		"SubCategoryName": "Hot Drinks",
-		"ProductName": "Isis Anise",
-		"Price": "15",
-		"Description ": "Soft Wafer 20 Packets",
-		"ImageURL ": "http://cf2.s3.souqcdn.com/item/2017/02/05/16/90/35/17/item_XL_16903517_28448308.jpg"
+		"CategoryName":"Drinks",
+		"SubCategoryName":"Hot Drinks",
+		"ProductName":"Isis Anise",
+		"Price":"15",
+		"Description":"Soft Wafer 20 Packets",
+		"ImageURL":"http://cf2.s3.souqcdn.com/item/2017/02/05/16/90/35/17/item_XL_16903517_28448308.jpg"
 	},
 	{
-		"CategoryName ": "Drinks",
-		"SubCategoryName": "Hot Drinks",
-		"ProductName": "Isis Mint",
-		"Price": "15",
-		"Description ": "Soft Wafer 20 Packets",
-		"ImageURL ": "http://alrawyshop.com/image/cache/data/1cake/81-150x150.jpg"
+		"CategoryName":"Drinks",
+		"SubCategoryName":"Hot Drinks",
+		"ProductName":"Isis Mint",
+		"Price":"15",
+		"Description":"Soft Wafer 20 Packets",
+		"ImageURL":"http://alrawyshop.com/image/cache/data/1cake/81-150x150.jpg"
 	},
 	{
-		"CategoryName ": "Drinks",
-		"SubCategoryName": "Hot Drinks",
-		"ProductName": "Isis Roselle",
-		"Price": "15",
-		"Description ": "Soft Wafer 20 Packets",
-		"ImageURL ": "https://cf2.s3.souqcdn.com/item/2017/02/05/16/90/56/51/item_L_16905651_28448309.jpg"
+		"CategoryName":"Drinks",
+		"SubCategoryName":"Hot Drinks",
+		"ProductName":"Isis Roselle",
+		"Price":"15",
+		"Description":"Soft Wafer 20 Packets",
+		"ImageURL":"https://cf2.s3.souqcdn.com/item/2017/02/05/16/90/56/51/item_L_16905651_28448309.jpg"
 	},
 	{
-		"CategoryName ": "Drinks",
-		"SubCategoryName": "Hot Drinks",
-		"ProductName": "Lipton tea",
-		"Price": "25.95",
-		"Description ": "Soft Wafer Tea 25 Packets",
-		"ImageURL ": "http://tmgholding-001-site20.dtempurl.com/pics/lebtontee25.jpg"
+		"CategoryName":"Drinks",
+		"SubCategoryName":"Hot Drinks",
+		"ProductName":"Lipton tea",
+		"Price":"25.95",
+		"Description":"Soft Wafer Tea 25 Packets",
+		"ImageURL":"http://tmgholding-001-site20.dtempurl.com/pics/lebtontee25.jpg"
 	},
 	{
-		"CategoryName ": "Drinks",
-		"SubCategoryName": "Cold Drinks",
-		"ProductName": "cokacola",
-		"Price": "8.9499999999999993",
-		"Description ": "1.5 liter soft drink",
-		"ImageURL ": "http://tmgholding-001-site20.dtempurl.com/pics/yyy-370x310.jpg"
+		"CategoryName":"Drinks",
+		"SubCategoryName":"Cold Drinks",
+		"ProductName":"cokacola",
+		"Price":"8.9499999999999993",
+		"Description":"1.5 liter soft drink",
+		"ImageURL":"http://tmgholding-001-site20.dtempurl.com/pics/yyy-370x310.jpg"
 	},
 	{
-		"CategoryName ": "Drinks",
-		"SubCategoryName": "Cold Drinks",
-		"ProductName": "cokacola",
-		"Price": "11.95",
-		"Description ": "2 liter soft drink",
-		"ImageURL ": "http://tmgholding-001-site20.dtempurl.com/pics/yyy-370x310.jpg"
+		"CategoryName":"Drinks",
+		"SubCategoryName":"Cold Drinks",
+		"ProductName":"cokacola",
+		"Price":"11.95",
+		"Description":"2 liter soft drink",
+		"ImageURL":"http://tmgholding-001-site20.dtempurl.com/pics/yyy-370x310.jpg"
 	},
 	{
-		"CategoryName ": "Drinks",
-		"SubCategoryName": "Cold Drinks",
-		"ProductName": "Pepsi",
-		"Price": "9.5",
-		"Description ": "1.5 liter soft drink",
-		"ImageURL ": "http://tmgholding-001-site20.dtempurl.com/pics/pepsi_soft_drink_large_pet_2litre_1-500x500.jpg"
+		"CategoryName":"Drinks",
+		"SubCategoryName":"Cold Drinks",
+		"ProductName":"Pepsi",
+		"Price":"9.5",
+		"Description":"1.5 liter soft drink",
+		"ImageURL":"http://tmgholding-001-site20.dtempurl.com/pics/pepsi_soft_drink_large_pet_2litre_1-500x500.jpg"
 	},
 	{
-		"CategoryName ": "Drinks",
-		"SubCategoryName": "Cold Drinks",
-		"ProductName": "Pepsi",
-		"Price": "12.5",
-		"Description ": "2 liter soft drink",
-		"ImageURL ": "http://www.gilsabad.com/media/catalog/product/cache/1/small_image/9df78eab33525d08d6e5fb8d27136e95/p/e/pepsi-soda-1.5litr-gilsabad.jpg"
+		"CategoryName":"Drinks",
+		"SubCategoryName":"Cold Drinks",
+		"ProductName":"Pepsi",
+		"Price":"12.5",
+		"Description":"2 liter soft drink",
+		"ImageURL":"http://www.gilsabad.com/media/catalog/product/cache/1/small_image/9df78eab33525d08d6e5fb8d27136e95/p/e/pepsi-soda-1.5litr-gilsabad.jpg"
 	},
 	{
-		"CategoryName ": "Drinks",
-		"SubCategoryName": "Cold Drinks",
-		"ProductName": "Rani",
-		"Price": "7.5",
-		"Description ": "Mango juice 1.5 liter",
-		"ImageURL ": "http://tmgholding-001-site20.dtempurl.com/pics/rani.jpg"
+		"CategoryName":"Drinks",
+		"SubCategoryName":"Cold Drinks",
+		"ProductName":"Rani",
+		"Price":"7.5",
+		"Description":"Mango juice 1.5 liter",
+		"ImageURL":"http://tmgholding-001-site20.dtempurl.com/pics/rani.jpg"
 	},
 	{
-		"CategoryName ": "Drinks",
-		"SubCategoryName": "Cold Drinks",
-		"ProductName": "Rani",
-		"Price": "7.5",
-		"Description ": "Apple juice 1.5 liter",
-		"ImageURL ": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSxQo6eUhPage_arg78W5Kv9f0967KbTSn_9o0v14E9o33bHJpO"
+		"CategoryName":"Drinks",
+		"SubCategoryName":"Cold Drinks",
+		"ProductName":"Rani",
+		"Price":"7.5",
+		"Description":"Apple juice 1.5 liter",
+		"ImageURL":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSxQo6eUhPage_arg78W5Kv9f0967KbTSn_9o0v14E9o33bHJpO"
 	},
 	{
-		"CategoryName ": "Drinks",
-		"SubCategoryName": "Cold Drinks",
-		"ProductName": "Beyti",
-		"Price": "5.95",
-		"Description ": "Mango juice 1.5 liter",
-		"ImageURL ": "http://tmgholding-001-site20.dtempurl.com/pics/Beryti.jpg"
+		"CategoryName":"Drinks",
+		"SubCategoryName":"Cold Drinks",
+		"ProductName":"Beyti",
+		"Price":"5.95",
+		"Description":"Mango juice 1.5 liter",
+		"ImageURL":"http://tmgholding-001-site20.dtempurl.com/pics/Beryti.jpg"
 	},
 	{
-		"CategoryName ": "Drinks",
-		"SubCategoryName": "Cold Drinks",
-		"ProductName": "Beyti",
-		"Price": "6.25",
-		"Description ": "Apple juice 1.5 liter",
-		"ImageURL ": "http://tmgholding-001-site20.dtempurl.com/pics/item_XL_17513505_28595696.jpg"
+		"CategoryName":"Drinks",
+		"SubCategoryName":"Cold Drinks",
+		"ProductName":"Beyti",
+		"Price":"6.25",
+		"Description":"Apple juice 1.5 liter",
+		"ImageURL":"http://tmgholding-001-site20.dtempurl.com/pics/item_XL_17513505_28595696.jpg"
 	},
 	{
-		"CategoryName ": "grain",
-		"SubCategoryName": "Rise",
-		"ProductName": "El SAA",
-		"Price": "7.75",
-		"Description ": "Luxury rice Namira first 1 kilo",
-		"ImageURL ": "http://alrawyshop.com/image/cache/data/1baby/292-370x310.png"
+		"CategoryName":"Grain",
+		"SubCategoryName":"Rise",
+		"ProductName":"El SAA",
+		"Price":"7.75",
+		"Description":"Luxury rice Namira first 1 kilo",
+		"ImageURL":"http://alrawyshop.com/image/cache/data/1baby/292-370x310.png"
 	},
 	{
-		"CategoryName ": "grain",
-		"SubCategoryName": "Rise",
-		"ProductName": "El dohaa",
-		"Price": "7.95",
-		"Description ": "Luxury rice Namira first 1 kilo",
-		"ImageURL ": "http://www.dalily2day.com/uploads/company_photos/14605415565.jpg"
+		"CategoryName":"Grain",
+		"SubCategoryName":"Rise",
+		"ProductName":"El dohaa",
+		"Price":"7.95",
+		"Description":"Luxury rice Namira first 1 kilo",
+		"ImageURL":"http://www.dalily2day.com/uploads/company_photos/14605415565.jpg"
 	},
 	{
-		"CategoryName ": "grain",
-		"SubCategoryName": "Rise",
-		"ProductName": "El dohaa",
-		"Price": "56.5",
-		"Description ": "Luxury rice Namira first 5 kilo",
-		"ImageURL ": "http://spinneys.awfarmarket.com/image/cache/data/AwfarMarket/awfar3885-700x700.jpg"
+		"CategoryName":"Grain",
+		"SubCategoryName":"Rise",
+		"ProductName":"El dohaa",
+		"Price":"56.5",
+		"Description":"Luxury rice Namira first 5 kilo",
+		"ImageURL":"http://spinneys.awfarmarket.com/image/cache/data/AwfarMarket/awfar3885-700x700.jpg"
 	},
 	{
-		"CategoryName ": "grain",
-		"SubCategoryName": "Rise",
-		"ProductName": "El matbakh",
-		"Price": "48.95",
-		"Description ": "Luxury rice Namira first 5 kilo",
-		"ImageURL ": "https://cf2.s3.souqcdn.com/item/2017/03/21/22/27/62/75/item_XL_22276275_30021886.jpg"
+		"CategoryName":"Grain",
+		"SubCategoryName":"Rise",
+		"ProductName":"El matbakh",
+		"Price":"48.95",
+		"Description":"Luxury rice Namira first 5 kilo",
+		"ImageURL":"https://cf2.s3.souqcdn.com/item/2017/03/21/22/27/62/75/item_XL_22276275_30021886.jpg"
 	},
 	{
-		"CategoryName ": "grain",
-		"SubCategoryName": "Pasta",
-		"ProductName": "Star",
-		"Price": "6.95",
-		"Description ": "Macaroni Luxury 1 kg",
-		"ImageURL ": "http://tmgholding-001-site20.dtempurl.com/pics/star.jpg"
+		"CategoryName":"Grain",
+		"SubCategoryName":"Pasta",
+		"ProductName":"Star",
+		"Price":"6.95",
+		"Description":"Macaroni Luxury 1 kg",
+		"ImageURL":"http://tmgholding-001-site20.dtempurl.com/pics/star.jpg"
 	},
 	{
-		"CategoryName ": "grain",
-		"SubCategoryName": "Pasta",
-		"ProductName": "Star",
-		"Price": "4",
-		"Description ": "Macaroni Luxury 350 g",
-		"ImageURL ": "http://tmgholding-001-site20.dtempurl.com/pics/startpasta.jpg"
+		"CategoryName":"Grain",
+		"SubCategoryName":"Pasta",
+		"ProductName":"Star",
+		"Price":"4",
+		"Description":"Macaroni Luxury 350 g",
+		"ImageURL":"http://tmgholding-001-site20.dtempurl.com/pics/startpasta.jpg"
 	},
 	{
-		"CategoryName ": "grain",
-		"SubCategoryName": "Pasta",
-		"ProductName": "El Malika",
-		"Price": "18.5",
-		"Description ": "Macaroni Luxury 1 kg",
-		"ImageURL ": "https://xormarket.com/index/1459/-1-.jpg"
+		"CategoryName":"Grain",
+		"SubCategoryName":"Pasta",
+		"ProductName":"El Malika",
+		"Price":"18.5",
+		"Description":"Macaroni Luxury 1 kg",
+		"ImageURL":"https://xormarket.com/index/1459/-1-.jpg"
 	},
 	{
-		"CategoryName ": "grain",
-		"SubCategoryName": "Pasta",
-		"ProductName": "El Malika",
-		"Price": "3.25",
-		"Description ": "Macaroni Luxury 400 g",
-		"ImageURL ": "https://xormarket.com/index/1457/-400-.jpg"
+		"CategoryName":"Grain",
+		"SubCategoryName":"Pasta",
+		"ProductName":"El Malika",
+		"Price":"3.25",
+		"Description":"Macaroni Luxury 400 g",
+		"ImageURL":"https://xormarket.com/index/1457/-400-.jpg"
 	},
 	{
-		"CategoryName ": "grain",
-		"SubCategoryName": "Pasta",
-		"ProductName": "Regina",
-		"Price": "3.25",
-		"Description ": "Macaroni Luxury 350 g",
-		"ImageURL ": "https://cf2.s3.souqcdn.com/item/2017/01/24/17/51/35/83/item_XL_17513583_23871690.jpg"
+		"CategoryName":"Grain",
+		"SubCategoryName":"Pasta",
+		"ProductName":"Regina",
+		"Price":"3.25",
+		"Description":"Macaroni Luxury 350 g",
+		"ImageURL":"https://cf2.s3.souqcdn.com/item/2017/01/24/17/51/35/83/item_XL_17513583_23871690.jpg"
 	},
 	{
-		"CategoryName ": "Beans",
-		"SubCategoryName": "Beans",
-		"ProductName": "El sohage lentils",
-		"Price": "10.5",
-		"Description ": "Lentils with a meal 500 g",
-		"ImageURL ": "http://tmgholding-001-site20.dtempurl.com/pics/Fayez.jpg"
+		"CategoryName":"Beans",
+		"SubCategoryName":"Beans",
+		"ProductName":"El sohage lentils",
+		"Price":"10.5",
+		"Description":"Lentils with a meal 500 g",
+		"ImageURL":"http://tmgholding-001-site20.dtempurl.com/pics/Fayez.jpg"
 	},
 	{
-		"CategoryName ": "Beans",
-		"SubCategoryName": "Beans",
-		"ProductName": "El dohaa lentils",
-		"Price": "10",
-		"Description ": "Yelow Lentils 500 g",
-		"ImageURL ": "http://tmgholding-001-site20.dtempurl.com/pics/lentils.jpg"
+		"CategoryName":"Beans",
+		"SubCategoryName":"Beans",
+		"ProductName":"El dohaa lentils",
+		"Price":"10",
+		"Description":"Yelow Lentils 500 g",
+		"ImageURL":"http://tmgholding-001-site20.dtempurl.com/pics/lentils.jpg"
 	},
 	{
-		"CategoryName ": "Beans",
-		"SubCategoryName": "Beans",
-		"ProductName": "El sohage Thermos",
-		"Price": "8",
-		"Description ": "Luxury Thermos 350 g",
-		"ImageURL ": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQdTGph-uX-HZnqMgxq-SqeC0Vg3GhKDSxlJWFQp1Oxt1Ne13TB"
+		"CategoryName":"Beans",
+		"SubCategoryName":"Beans",
+		"ProductName":"El sohage Thermos",
+		"Price":"8",
+		"Description":"Luxury Thermos 350 g",
+		"ImageURL":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQdTGph-uX-HZnqMgxq-SqeC0Vg3GhKDSxlJWFQp1Oxt1Ne13TB"
 	},
 	{
-		"CategoryName ": "Beans",
-		"SubCategoryName": "Beans",
-		"ProductName": "El dohaa Thermos",
-		"Price": "8.5",
-		"Description ": "Luxury Thermos 350 g",
-		"ImageURL ": "http://tmgholding-001-site20.dtempurl.com/pics/Thermos.jpg"
+		"CategoryName":"Beans",
+		"SubCategoryName":"Beans",
+		"ProductName":"El dohaa Thermos",
+		"Price":"8.5",
+		"Description":"Luxury Thermos 350 g",
+		"ImageURL":"http://tmgholding-001-site20.dtempurl.com/pics/Thermos.jpg"
 	},
 	{
-		"CategoryName ": "Entertainment",
-		"SubCategoryName": "chips",
-		"ProductName": "Tiger",
-		"Price": "2",
-		"Description ": "Tiger",
-		"ImageURL ": "https://mir-s3-cdn-cf.behance.net/project_modules/disp/2199c618099667.562c3d83efbc6.png"
+		"CategoryName":"Entertainment",
+		"SubCategoryName":"chips",
+		"ProductName":"Tiger",
+		"Price":"2",
+		"Description":"Tiger",
+		"ImageURL":"https://mir-s3-cdn-cf.behance.net/project_modules/disp/2199c618099667.562c3d83efbc6.png"
 	},
 	{
-		"CategoryName ": "Entertainment",
-		"SubCategoryName": "chips",
-		"ProductName": "Crunchy",
-		"Price": "2",
-		"Description ": "Kranshe",
-		"ImageURL ": "http://tmgholding-001-site20.dtempurl.com/pics/crunchy.jpg"
+		"CategoryName":"Entertainment",
+		"SubCategoryName":"chips",
+		"ProductName":"Crunchy",
+		"Price":"2",
+		"Description":"Kranshe",
+		"ImageURL":"http://tmgholding-001-site20.dtempurl.com/pics/crunchy.jpg"
 	},
 	{
-		"CategoryName ": "Entertainment",
-		"SubCategoryName": "chips",
-		"ProductName": "Chipse",
-		"Price": "2",
-		"Description ": "Chipse",
-		"ImageURL ": "http://tmgholding-001-site20.dtempurl.com/pics/1643-large_default.jpg"
+		"CategoryName":"Entertainment",
+		"SubCategoryName":"chips",
+		"ProductName":"Chipse",
+		"Price":"2",
+		"Description":"Chipse",
+		"ImageURL":"http://tmgholding-001-site20.dtempurl.com/pics/1643-large_default.jpg"
 	},
 	{
-		"CategoryName ": "Entertainment",
-		"SubCategoryName": "chips",
-		"ProductName": "Chipse",
-		"Price": "5",
-		"Description ": "Chipse",
-		"ImageURL ": "http://tmgholding-001-site20.dtempurl.com/pics/200-370x310.JPG"
+		"CategoryName":"Entertainment",
+		"SubCategoryName":"chips",
+		"ProductName":"Chipse",
+		"Price":"5",
+		"Description":"Chipse",
+		"ImageURL":"http://tmgholding-001-site20.dtempurl.com/pics/200-370x310.JPG"
 	},
 	{
-		"CategoryName ": "Entertainment",
-		"SubCategoryName": "Chocolate",
-		"ProductName": "galaxy",
-		"Price": "3.5",
-		"Description ": "galaxy",
-		"ImageURL ": "http://tmgholding-001-site20.dtempurl.com/pics/galaxy.jpg"
+		"CategoryName":"Entertainment",
+		"SubCategoryName":"Chocolate",
+		"ProductName":"galaxy",
+		"Price":"3.5",
+		"Description":"galaxy",
+		"ImageURL":"http://tmgholding-001-site20.dtempurl.com/pics/galaxy.jpg"
 	},
 	{
-		"CategoryName ": "Entertainment",
-		"SubCategoryName": "Chocolate",
-		"ProductName": "galaxy",
-		"Price": "9",
-		"Description ": "galaxy",
-		"ImageURL ": "http://tmgholding-001-site20.dtempurl.com/pics/glaxy2.jpg"
+		"CategoryName":"Entertainment",
+		"SubCategoryName":"Chocolate",
+		"ProductName":"galaxy",
+		"Price":"9",
+		"Description":"galaxy",
+		"ImageURL":"http://tmgholding-001-site20.dtempurl.com/pics/glaxy2.jpg"
 	},
 	{
-		"CategoryName ": "Entertainment",
-		"SubCategoryName": "Chocolate",
-		"ProductName": "Cadbury",
-		"Price": "5",
-		"Description ": "Cadbury",
-		"ImageURL ": "http://tmgholding-001-site20.dtempurl.com/pics/capore.jpg"
+		"CategoryName":"Entertainment",
+		"SubCategoryName":"Chocolate",
+		"ProductName":"Cadbury",
+		"Price":"5",
+		"Description":"Cadbury",
+		"ImageURL":"http://tmgholding-001-site20.dtempurl.com/pics/capore.jpg"
 	},
 	{
-		"CategoryName ": "Entertainment",
-		"SubCategoryName": "Chocolate",
-		"ProductName": "Cadbury",
-		"Price": "10",
-		"Description ": "Cadbury",
-		"ImageURL ": "http://tmgholding-001-site20.dtempurl.com/pics/Cadbury-Dairy-Milk-Bar-Chocolate.jpg"
-	},
-	{
-		"CategoryName ": ""
+		"CategoryName":"Entertainment",
+		"SubCategoryName":"Chocolate",
+		"ProductName":"Cadbury",
+		"Price":"10",
+		"Description":"Cadbury",
+		"ImageURL":"http://tmgholding-001-site20.dtempurl.com/pics/Cadbury-Dairy-Milk-Bar-Chocolate.jpg"
 	}
 ]

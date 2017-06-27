@@ -168,10 +168,42 @@ namespace BusinessEntities.Migrations
 
             var smpleProductsString = ReadFileContent("simpleProducts.json");
             var ldtSimpleProducts = JsonConvert.DeserializeObject<List<SimpleProduct>>(smpleProductsString);
-
+            var metroCompany = context.Companies.SingleOrDefault(c => c.CompanyName == "metro");
 
             foreach (var simpleProduct in ldtSimpleProducts)
             {
+                context.Categories.AddOrUpdate(p => p.CategoryName,
+                    new Category()
+                    {
+                        CategoryName = simpleProduct.CategoryName,
+                        Description = simpleProduct.CategoryName
+                    });
+                SaveChanges(context);
+                var category = context.Categories.SingleOrDefault(c => c.CategoryName == simpleProduct.CategoryName);
+                context.SubCategories.AddOrUpdate(p => new { p.SubCategoryName, p.CategoryId },
+                    new SubCategory()
+                    {
+                        SubCategoryName = simpleProduct.SubCategoryName,
+                        Description = simpleProduct.SubCategoryName,
+                        CategoryId = category.Id
+                    });
+                context.SaveChanges();
+                var subCat = context.SubCategories.SingleOrDefault(c => c.SubCategoryName == simpleProduct.SubCategoryName);
+                context.Products.AddOrUpdate(p => new { p.ProductName, p.CompanyId },
+                new Product()
+                {
+                    Id = Guid.NewGuid(),
+                    ProductName = simpleProduct.ProductName,
+                    Description = simpleProduct.Description,
+                    CompanyId = metroCompany.Id,
+                    SubCategoryId = subCat.Id,
+                    Price = simpleProduct.Price,
+                    ImageURL = simpleProduct.ImageURL,
+                    Rate = 0,
+                    AvailableStock = 500
+
+                });
+                SaveChanges(context);
 
             }
 
