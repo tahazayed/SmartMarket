@@ -13,7 +13,7 @@ $(document).ready(function () {
                     traditional: true,
                     success: function (data) {
 
-                        $('#PricePerItem').val(data.PricePerItem);
+                        $('#PricePerItem').html(data.PricePerItem);
                     }
                 });
             });

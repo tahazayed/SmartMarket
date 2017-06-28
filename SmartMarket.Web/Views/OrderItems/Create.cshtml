@@ -28,8 +28,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.PricePerItem, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.PricePerItem, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.PricePerItem, "", new { @class = "text-danger" })
+                <span id="PricePerItem">@Html.DisplayFor(model => model.PricePerItem)</span>
             </div>
         </div>
 

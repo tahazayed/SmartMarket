@@ -42,7 +42,7 @@ namespace SmartMarket.Web.Controllers
             ViewBag.OrderId = new SelectList(db.Orders, "Id", "Id");
             ViewBag.ProductId = new SelectList(db.Products, "Id", "ProductName");
             orderItem.Count = 1;
-            return View(orderItem);
+            return PartialView(orderItem);
         }
 
         // POST: OrderItems/Create
@@ -55,8 +55,22 @@ namespace SmartMarket.Web.Controllers
             if (ModelState.IsValid)
             {
                 orderItem.PricePerItem = db.Products.SingleOrDefault(p => p.Id == orderItem.ProductId).Price;
-                orderItem.Id = Guid.NewGuid();
-                db.OrderItems.Add(orderItem);
+                var existing =
+                    db.OrderItems.Where(oi => oi.OrderId == orderItem.OrderId && oi.ProductId == orderItem.ProductId)
+                        .SingleOrDefault();
+                if (existing != null)
+                {
+                    existing.Count += orderItem.Count;
+                    existing.PricePerItem = orderItem.PricePerItem;
+                    db.Entry(existing).State = EntityState.Modified;
+                }
+                else
+                {
+                    
+                    orderItem.Id = Guid.NewGuid();
+                    db.OrderItems.Add(orderItem);
+                }
+
                 db.SaveChanges();
                 return Json(new { success = true });
             }
