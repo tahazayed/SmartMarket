@@ -17,7 +17,7 @@ namespace SmartMarket.Web.Controllers
         {
             var orderItems = db.OrderItems.Include(o => o.Order).Include(o => o.Product).Where(o => o.OrderId == orderId);
             ViewBag.orderId = orderId;
-            return View(orderItems.ToList());
+            return PartialView(orderItems.ToList());
         }
 
         // GET: OrderItems/Details/5
@@ -32,7 +32,7 @@ namespace SmartMarket.Web.Controllers
             {
                 return HttpNotFound();
             }
-            return View(orderItem);
+            return PartialView(orderItem);
         }
 
         // GET: OrderItems/Create
