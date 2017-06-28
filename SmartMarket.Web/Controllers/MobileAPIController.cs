@@ -1,6 +1,7 @@
 ﻿using BusinessEntities;
 using SmartMarket.Web.Business;
 using SmartMarket.Web.Helpers;
+using SmartMarket.Web.Models;
 using System;
 using System.Data.Entity;
 using System.Linq;
@@ -8,6 +9,8 @@ using System.Web;
 using System.Web.Http;
 using System.Web.Http.Cors;
 using System.Web.Http.Description;
+using System.Web.Mvc;
+using Newtonsoft.Json.Linq;
 using WebApi.OutputCache.V2;
 
 namespace SmartMarket.Web.Controllers
@@ -64,9 +67,9 @@ namespace SmartMarket.Web.Controllers
             return lstCompanies.OrderBy(c => c.CompanyName);
         }
 
-        [HttpGet]
+        [System.Web.Http.HttpGet]
         [CacheOutput(ClientTimeSpan = 300, ServerTimeSpan = 300)]
-        [Route("api/MobileAPI/GetProducts", Name = "GetProducts")]
+        [System.Web.Http.Route("api/MobileAPI/GetProducts", Name = "GetProducts")]
         public IQueryable<Product> GetProducts(Guid? categoryId, Guid? companyId, string search = "")
         {
             IQueryable<Product> lstProducts;
@@ -108,8 +111,8 @@ namespace SmartMarket.Web.Controllers
             return db.SubCategories.Where(c => c.CategoryId == categoryId).OrderBy(c => c.SubCategoryName);
         }
 
-        [AllowAnonymous]
-        [HttpGet]
+        [System.Web.Http.AllowAnonymous]
+        [System.Web.Http.HttpGet]
         public IHttpActionResult Login(string userName, string password)
         {
             string IP = HttpContext.Current.Request.UserHostAddress;
@@ -129,7 +132,44 @@ namespace SmartMarket.Web.Controllers
             return Json(new { success = false, Message = "Invalid username or password", UserId = -1 });
 
         }
+        [System.Web.Http.AllowAnonymous]
+        [System.Web.Http.HttpPost]
+        public IHttpActionResult PlaceOrder([FromBody] OrderModel orderModel)
+        {
+            try
+            {
+                using (SmartMarketDB _db = new SmartMarketDB())
+                {
+ 
+                    long userId = orderModel.UserId;
+                    var singleOrDefault = _db.Customers.Where(c => c.UserId == userId).SingleOrDefault();
+                    if (singleOrDefault != null)
+                    {
+                        var customerId = singleOrDefault.Id;
 
+                        var order = new Order { CustomerId = customerId };
+                        order = _db.Orders.Add(order);
+                        _db.SaveChanges();
+                        foreach (var orderItem in orderModel.OrderItems)
+                        {
+                            orderItem.OrderId = order.Id;
+                            orderItem.PricePerItem = _db.Products.SingleOrDefault(p => p.Id == orderItem.ProductId).Price;
+                            _db.OrderItems.Add(orderItem);
+                        }
+                        _db.SaveChanges();
+
+                        return Json(new { success = true, Message = "", OrderId = order.Id });
+                    }
+                    return Json(new { success = false, Message = "invalid customer", OrderId = -1 });
+                }
+            }
+            catch (Exception ex)
+            {
+
+                return Json(new { success = false, Message = ex.Message, OrderId = -1 });
+            }
+
+        }
         public IHttpActionResult Singup(BusinessEntities.User user)
         {
             try
@@ -151,14 +191,13 @@ namespace SmartMarket.Web.Controllers
             }
 
         }
-
         public IQueryable<Order> GetOrdersByUserId(long userId)
         {
             IQueryable<Order> lstOrders;
 
             lstOrders = (from o in db.Orders
-                where o.Customer.User.Id == userId
-                select o).Include(o => o.OrderItems);
+                         where o.Customer.User.Id == userId
+                         select o).Include(o => o.OrderItems);
 
 
             return lstOrders.OrderByDescending(c => c.OrderDate);

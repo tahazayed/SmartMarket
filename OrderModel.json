@@ -1,0 +1,17 @@
+{
+	"UserId": 4
+	"orderItems": [{
+			"orderId": "00000000-0000-0000-0000-000000000000",
+			"productId": "956e49f3-465c-e711-9d38-4485002c4efc",
+			"count": 1,
+			"pricePerItem": 44946.0,
+
+		}, {
+			"orderId": "ca84c836-475c-e711-9d38-4485002c4efc",
+			"productId": "9b6e49f3-465c-e711-9d38-4485002c4efc",
+			"count": 1,
+			"pricePerItem": 210.0,
+			"id": "00000000-0000-0000-0000-000000000000"
+		}
+	]
+}
