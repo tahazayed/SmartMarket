@@ -220,6 +220,7 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\js\dev.js" />
     <Content Include="Content\js\dllCascade.js" />
     <Content Include="Content\js\ModalDialog.js" />
     <Content Include="Content\themes\base\accordion.css" />

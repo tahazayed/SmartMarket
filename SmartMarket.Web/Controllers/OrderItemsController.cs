@@ -66,7 +66,6 @@ namespace SmartMarket.Web.Controllers
                 }
                 else
                 {
-                    
                     orderItem.Id = Guid.NewGuid();
                     db.OrderItems.Add(orderItem);
                 }
