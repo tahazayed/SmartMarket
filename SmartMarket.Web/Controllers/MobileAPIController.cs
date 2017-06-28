@@ -152,6 +152,17 @@ namespace SmartMarket.Web.Controllers
 
         }
 
+        public IQueryable<Order> GetOrdersByUserId(long userId)
+        {
+            IQueryable<Order> lstOrders;
+
+            lstOrders = (from o in db.Orders
+                where o.Customer.User.Id == userId
+                select o).Include(o => o.OrderItems);
+
+
+            return lstOrders.OrderByDescending(c => c.OrderDate);
+        }
         protected override void Dispose(bool disposing)
         {
             if (disposing)
