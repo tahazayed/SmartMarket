@@ -171,27 +171,72 @@ namespace SmartMarket.Web.Controllers
             }
 
         }
-        public IHttpActionResult Singup(BusinessEntities.User user)
+
+        [System.Web.Http.AllowAnonymous]
+        [System.Web.Http.HttpPost]
+        public IHttpActionResult Singup([FromBody]BusinessEntities.User user)
         {
-            try
+
+            using (SmartMarketDB _db = new SmartMarketDB())
             {
-                using (SmartMarketDB _db = new SmartMarketDB())
+                using (var dbContextTransaction = _db.Database.BeginTransaction())
                 {
-                    string encodedPassword = TextEncoding.EncodeString(user.Password);
-                    user.Password = encodedPassword;
-                    _db.Entry(user).State = EntityState.Modified;
-                    _db.SaveChanges();
-                    Business.User _user = new Business.User();
-                    return Json(new { success = true, Message = "", UserId = _user.GetUserId(user.UserName) });
+                    try
+                    {
+                        string encodedPassword = TextEncoding.EncodeString(user.Password);
+                        user.Password = encodedPassword;
+                        user = _db.Users.Add(user);
+                        _db.SaveChanges();
+                        string roleName = "";
+                        switch (user.UserType)
+                        {
+                            case UserType.Company:
+                                roleName = "Company";
+                                break;
+                            case UserType.Customer:
+                                roleName = "Customer";
+                                break;
+                            case UserType.EStore:
+                                roleName = "Admin";
+                                break;
+                        }
+                        if (!string.IsNullOrEmpty(roleName))
+                        {
+                            var role = _db.Roles.SingleOrDefault(r => r.Roles == roleName);
+                            var userRole = new UserRole
+                            {
+                                Role = role,
+                                User = user
+                            };
+                            _db.UserRoles.Add(userRole);
+                        }
+                        _db.SaveChanges();
+                        if (user.UserType == UserType.Customer)
+                        {
+                            var customer = new Customer
+                            {
+                                User = user,
+                                Gender = Gender.Male,
+                                Nikename = user.UserName
+                            };
+                            _db.Customers.Add(customer);
+                            _db.SaveChanges();
+                        }
+                        dbContextTransaction.Commit();
+
+                        Business.User _user = new Business.User();
+                        return Json(new { success = true, Message = "", UserId = _user.GetUserId(user.UserName) });
+                    }
+                    catch (Exception ex)
+                    {
+                        dbContextTransaction.Rollback();
+                        return Json(new { success = false, Message = ex.Message, UserId = -1 });
+                    }
                 }
-            }
-            catch (Exception ex)
-            {
 
-                return Json(new { success = false, Message = ex.Message, UserId = -1 });
             }
-
         }
+
         public IQueryable<Order> GetOrdersByUserId(long userId)
         {
             IQueryable<Order> lstOrders;
