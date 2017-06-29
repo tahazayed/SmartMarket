@@ -18,6 +18,8 @@
 
         $('#ProductId').trigger('change');
     }
+
+
     if ($("#lstCategories").length > 0) {
         $('#lstCategories')
         .change(function () {
@@ -27,8 +29,8 @@
               }
 
             });
-
-
-
     };
+
+
+
 });

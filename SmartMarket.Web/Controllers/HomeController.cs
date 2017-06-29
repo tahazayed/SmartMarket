@@ -33,18 +33,25 @@ namespace SmartMarket.Web.Controllers
         [HttpPost]
         public ActionResult Index([Bind(Include = "Search")] HomeModel homeModel)
         {
-            //var lstCategories = new List<SelectListItem>
-            //{
-            //    new SelectListItem {Selected = true, Text = "All Categories", Value = "-1"}
-            //};
-            //foreach (var category in db.Categories.OrderBy(c => c.CategoryName).ToList())
-            //{
-            //    lstCategories.Add(new SelectListItem { Selected = false, Text = category.CategoryName, Value = category.Id.ToString() });
-            //}
 
-            //homeModel.lstCategories = new SelectList(lstCategories, "Value", "Text");
+            if (!string.IsNullOrEmpty(homeModel.Search))
+            {
+                return RedirectToAction("Search", "Products", new { search = homeModel.Search});
+            }
 
-            //homeModel.lstCompanies = db.Companies.OrderBy(c => c.CompanyName).ToList();
+            var lstCategories = new List<SelectListItem>
+            {
+                new SelectListItem {Selected = true, Text = "All Categories", Value = "-1"}
+            };
+            foreach (var category in db.Categories.OrderBy(c => c.CategoryName).ToList())
+            {
+                lstCategories.Add(new SelectListItem { Selected = false, Text = category.CategoryName, Value = category.Id.ToString() });
+            }
+
+            homeModel.lstCategories = new SelectList(lstCategories, "Value", "Text");
+
+            homeModel.lstCompanies = db.Companies.OrderBy(c => c.CompanyName).ToList();
+
             return View(homeModel);
         }
 
