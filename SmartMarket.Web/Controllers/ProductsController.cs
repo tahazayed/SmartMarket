@@ -1,5 +1,6 @@
 ﻿using BusinessEntities;
 using SmartMarket.Web.Business;
+using SmartMarket.Web.Helpers;
 using System;
 using System.Data.Entity;
 using System.Linq;
@@ -45,9 +46,10 @@ namespace SmartMarket.Web.Controllers
             {
                 products = products.Where(p => p.SubCategory.CategoryId == categoryId.Value);
             }
-            ViewBag.companyId = companyId;
-            ViewBag.categoryId = categoryId;
-            ViewBag.search = search;
+            CommonHelper oCommonHelper = new CommonHelper();
+
+            ViewBag.lstCategories = oCommonHelper.GetNonEmptyCategories();
+
 
             return View(products.ToList());
         }

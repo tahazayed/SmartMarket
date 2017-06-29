@@ -1,4 +1,5 @@
 ﻿using BusinessEntities;
+using SmartMarket.Web.Helpers;
 using SmartMarket.Web.Models;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,16 +16,9 @@ namespace SmartMarket.Web.Controllers
         {
             var homeModel = new HomeModel();
 
-            var lstCategories = new List<SelectListItem>
-            {
-                new SelectListItem {Selected = true, Text = "All Categories", Value = "-1"}
-            };
-            foreach (var category in db.Categories.OrderBy(c => c.CategoryName).ToList())
-            {
-                lstCategories.Add(new SelectListItem { Selected = false, Text = category.CategoryName, Value = category.Id.ToString() });
-            }
+            CommonHelper oCommonHelper = new CommonHelper();
 
-            homeModel.lstCategories = new SelectList(lstCategories, "Value", "Text");
+            homeModel.lstCategories = oCommonHelper.GetNonEmptyCategories();
 
             homeModel.lstCompanies = db.Companies.OrderBy(c => c.CompanyName).ToList();
 
@@ -36,7 +30,7 @@ namespace SmartMarket.Web.Controllers
 
             if (!string.IsNullOrEmpty(homeModel.Search))
             {
-                return RedirectToAction("Search", "Products", new { search = homeModel.Search});
+                return RedirectToAction("Search", "Products", new { search = homeModel.Search });
             }
 
             var lstCategories = new List<SelectListItem>

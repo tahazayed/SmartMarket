@@ -207,6 +207,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\CommonHelper.cs" />
     <Compile Include="Helpers\TextEncoding.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\HomeModel.cs" />
@@ -3657,6 +3658,7 @@
     <Content Include="Pics\lebtontee.PNG" />
     <Content Include="Pics\lebtontee25.jpg" />
     <Content Include="Pics\lentils.jpg" />
+    <Content Include="Pics\Metro.png" />
     <Content Include="Pics\pepsi_soft_drink_large_pet_2litre_1-500x500.jpg" />
     <Content Include="Pics\rani.jpg" />
     <Content Include="Pics\search.png" />

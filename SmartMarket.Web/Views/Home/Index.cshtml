@@ -10,12 +10,12 @@
 </div>
 @using (Html.BeginForm())
 {
-    <div class="row" style="align-self: center">
+    <div class="row">
 
         <div class="col-md-12">
             Search by product<span style="color:red">*</span>:&nbsp;&nbsp;&nbsp;&nbsp;
             @Html.EditorFor(model => model.Search, new { htmlAttributes = new { @class = "form-search", @style = "width: 70%", @placeholder = "Search by product name" } })
-            &nbsp;<input type="image" src="/Pics/search.png" width="38" height="38" class="btn btn-default" id="SearchBTN">
+            &nbsp;<input type="image" src="~/Pics/search.png" width="38" height="38" class="btn btn-default" id="SearchBTN">
             &nbsp; @Html.DropDownList("lstCategories", null, htmlAttributes: new { @class = "form-search" })
 
         </div>
