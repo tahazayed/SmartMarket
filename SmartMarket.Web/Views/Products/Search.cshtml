@@ -15,7 +15,7 @@
             Search by product<span style="color: red">*</span>:&nbsp;&nbsp;&nbsp;&nbsp;
             <input class="form-search text-box single-line" id="Search" name="Search" placeholder="Search by product name" style="width: 70%" type="text" value="">
             &nbsp;<input type="image" src="~/Pics/search.png" width="38" height="38" class="btn btn-default" id="SearchBTN">
-            &nbsp; @Html.DropDownList("lstCategories", new SelectList(ViewBag.lstCategories, "Value", "Text"), htmlAttributes: new { @class = "form-search" })
+            &nbsp; @Html.DropDownList("lstCategories", ViewBag.lstCategorie as SelectList, htmlAttributes: new { @class = "form-search" })
 
         </div>
     </div>

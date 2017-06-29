@@ -26,6 +26,8 @@
               categoryId =  $("#lstCategories").val();
               if (categoryId !== "-1") {
                   window.location.href = "/Products/Search?search=&companyId=&categoryId=" + categoryId;
+              } else {
+                  window.location.href = "/Products/Search?search=&companyId=&categoryId=";
               }
 
             });

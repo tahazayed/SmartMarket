@@ -7,19 +7,20 @@ namespace SmartMarket.Web.Helpers
 {
     public class CommonHelper
     {
-        public SelectList GetNonEmptyCategories()
+        public SelectList GetNonEmptyCategories(string selected="")
         {
             using (SmartMarketDB db = new SmartMarketDB())
             {
                 var lstCategories = new List<SelectListItem>
                 {
-                    new SelectListItem {Selected = true, Text = "All Categories", Value = "-1"}
+                    new SelectListItem {Selected = false, Text = "All Categories", Value = "-1"}
                 };
                 var categories = (from p in db.Products
                                   select p.SubCategory.Category).Distinct().OrderBy(c => c.CategoryName).ToList();
                 ;
                 foreach (var category in categories)
                 {
+
                     lstCategories.Add(new SelectListItem
                     {
                         Selected = false,
@@ -27,7 +28,7 @@ namespace SmartMarket.Web.Helpers
                         Value = category.Id.ToString()
                     });
                 }
-                return new SelectList(lstCategories, "Value", "Text");
+                return new SelectList(lstCategories, "Value", "Text", selected);
 
             }
         }
