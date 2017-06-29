@@ -9,8 +9,6 @@ using System.Web;
 using System.Web.Http;
 using System.Web.Http.Cors;
 using System.Web.Http.Description;
-using System.Web.Mvc;
-using Newtonsoft.Json.Linq;
 using WebApi.OutputCache.V2;
 
 namespace SmartMarket.Web.Controllers
@@ -27,11 +25,14 @@ namespace SmartMarket.Web.Controllers
             IQueryable<Category> lstCategories;
             if (categoryId.HasValue)
             {
-                lstCategories = db.Categories.Where(c => c.Id == categoryId);
+                lstCategories = (from p in db.Products
+                                 where p.SubCategory.CategoryId == categoryId.Value
+                                 select p.SubCategory.Category).Distinct();
             }
             else
             {
-                lstCategories = db.Categories;
+                lstCategories = (from p in db.Products
+                                 select p.SubCategory.Category).Distinct();
             }
             return lstCategories.OrderBy(c => c.CategoryName);
         }
@@ -140,7 +141,7 @@ namespace SmartMarket.Web.Controllers
             {
                 using (SmartMarketDB _db = new SmartMarketDB())
                 {
- 
+
                     long userId = orderModel.UserId;
                     var singleOrDefault = _db.Customers.Where(c => c.UserId == userId).SingleOrDefault();
                     if (singleOrDefault != null)
