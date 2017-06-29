@@ -311,6 +311,7 @@ namespace MadintyFacebook.Controllers
             }
             return View(user);
         }
+        [AllowAnonymous]
         public ActionResult Logout()
         {
             FormsAuthentication.SignOut();
