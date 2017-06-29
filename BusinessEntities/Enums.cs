@@ -9,6 +9,6 @@
     {
         Company = 1,
         Customer = 2,
-        EStore = 3
+        EStore = 3//admin
     }
 }
