@@ -1,6 +1,5 @@
 ﻿using BusinessEntities;
 using SmartMarket.Web.Helpers;
-using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
@@ -66,7 +65,8 @@ namespace MadintyFacebook.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize(Roles = "Admin")]
-        public ActionResult Create([Bind(Include = "ID,UserName,Password,Active,Email,Address,Phone")] User user)
+        public ActionResult Create(
+            [Bind(Include = "ID,UserName,Password,Active,Email,Address,Phone,UserType")] User user)
         {
             if (ModelState.IsValid)
             {
@@ -78,7 +78,31 @@ namespace MadintyFacebook.Controllers
                         user.Password = encodedPassword;
                         user = _db.Users.Add(user);
                         _db.SaveChanges();
+                        string roleName = "";
+                        switch (user.UserType)
+                        {
+                            case UserType.Company:
+                                roleName = "Company";
+                                break;
+                            case UserType.Customer:
+                                roleName = "Customer";
+                                break;
+                            case UserType.EStore:
+                                roleName = "Admin";
+                                break;
+                        }
+                        if (!string.IsNullOrEmpty(roleName))
+                        {
+                            var role = _db.Roles.SingleOrDefault(r => r.Roles == roleName);
+                            var userRole = new UserRole
+                            {
+                                Role = role,
+                                User = user
+                            };
+                            _db.UserRoles.Add(userRole);
 
+                        }
+                        _db.SaveChanges();
                         dbContextTransaction.Commit();
 
 
@@ -116,15 +140,57 @@ namespace MadintyFacebook.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize(Roles = "Admin")]
-        public ActionResult Edit([Bind(Include = "ID,UserName,Password,Active,Email,Address,Phone")] User user)
+        public ActionResult Edit([Bind(Include = "ID,UserName,Password,Active,Email,Address,Phone,UserType")] User user)
         {
             if (ModelState.IsValid && user.UserName.ToLower() != "admin")
             {
-                string encodedPassword = TextEncoding.EncodeString(user.Password);
-                user.Password = encodedPassword;
-                _db.Entry(user).State = EntityState.Modified;
-                _db.SaveChanges();
-                return RedirectToAction("Index");
+                using (var dbContextTransaction = _db.Database.BeginTransaction())
+                {
+                    try
+                    {
+
+                        string encodedPassword = TextEncoding.EncodeString(user.Password);
+                        user.Password = encodedPassword;
+                        _db.Entry(user).State = EntityState.Modified;
+                        _db.SaveChanges();
+                        foreach (var ur in _db.UserRoles.Where(u => u.UserId == user.Id).ToList())
+                        {
+                            _db.UserRoles.Remove(ur);
+                        }
+                        _db.SaveChanges();
+                        string roleName = "";
+                        switch (user.UserType)
+                        {
+                            case UserType.Company:
+                                roleName = "Company";
+                                break;
+                            case UserType.Customer:
+                                roleName = "Customer";
+                                break;
+                            case UserType.EStore:
+                                roleName = "Admin";
+                                break;
+                        }
+                        if (!string.IsNullOrEmpty(roleName))
+                        {
+                            var role = _db.Roles.SingleOrDefault(r => r.Roles == roleName);
+                            var userRole = new UserRole
+                            {
+                                Role = role,
+                                User = user
+                            };
+                            _db.UserRoles.Add(userRole);
+
+                        }
+                        _db.SaveChanges();
+                        dbContextTransaction.Commit();
+                        return RedirectToAction("Index");
+                    }
+                    catch
+                    {
+                        dbContextTransaction.Rollback();
+                    }
+                }
             }
             return View(user);
         }
