@@ -1,6 +1,6 @@
 ﻿$(document).ready(function () {
-
-    $('#ProductId')
+    if ($("#ProductId").length > 0) {
+        $('#ProductId')
             .change(function () {
                 $.ajax({
                     type: "post",
@@ -16,8 +16,19 @@
             });
 
 
+        $('#ProductId').trigger('change');
+    }
+    if ($("#lstCategories").length > 0) {
+        $('#lstCategories')
+        .change(function () {
+              categoryId =  $("#lstCategories").val();
+              if (categoryId !== "-1") {
+                  window.location.href = "/Products/Search?search=&companyId=&categoryId=" + categoryId;
+              }
+
+            });
 
 
-    $('#ProductId').trigger('change');
 
+    };
 });

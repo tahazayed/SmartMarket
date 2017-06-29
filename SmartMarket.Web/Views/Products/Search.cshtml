@@ -27,7 +27,9 @@
 </div>
 
 <br /><br /><br /><br />
-
+@Html.Hidden("search", (string)ViewBag.search)
+@Html.Hidden("companyId", (Guid?)ViewBag.companyId)
+@Html.Hidden("categoryId", (Guid?)ViewBag.categoryId)
 <div class="row">
     @Html.ActionLink("Select another filter", "Index", "Home")
 </div>

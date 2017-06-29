@@ -45,6 +45,10 @@ namespace SmartMarket.Web.Controllers
             {
                 products = products.Where(p => p.SubCategory.CategoryId == categoryId.Value);
             }
+            ViewBag.companyId = companyId;
+            ViewBag.categoryId = categoryId;
+            ViewBag.search = search;
+
             return View(products.ToList());
         }
         // GET: Products/Details/5
