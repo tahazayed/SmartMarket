@@ -59,6 +59,30 @@ namespace MadintyFacebook.Controllers
             return View(user);
         }
 
+        [AllowAnonymous]
+        public ActionResult SignUp()
+        {
+            var user = new User { UserType = UserType.Customer };
+            return View(user);
+        }
+        [HttpPost]
+        [AllowAnonymous]
+        [Authorize(Roles = "Admin")]
+        public ActionResult SignUp([Bind(Include = "ID,UserName,Password,Active,Email,Address,Phone,UserType")] User user)
+        {
+            user.UserType = UserType.Customer;
+            if (ModelState.IsValid)
+            {
+
+                if (_CreateUser(user))
+                {
+                    FormsAuthentication.SetAuthCookie(user.UserName, false);
+                    return RedirectToAction("Index", "Home");
+                }
+            }
+
+            return View(user);
+        }
         // POST: Users/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
@@ -70,52 +94,73 @@ namespace MadintyFacebook.Controllers
         {
             if (ModelState.IsValid)
             {
-                using (var dbContextTransaction = _db.Database.BeginTransaction())
+
+                if (_CreateUser(user))
                 {
-                    try
-                    {
-                        string encodedPassword = TextEncoding.EncodeString(user.Password);
-                        user.Password = encodedPassword;
-                        user = _db.Users.Add(user);
-                        _db.SaveChanges();
-                        string roleName = "";
-                        switch (user.UserType)
-                        {
-                            case UserType.Company:
-                                roleName = "Company";
-                                break;
-                            case UserType.Customer:
-                                roleName = "Customer";
-                                break;
-                            case UserType.EStore:
-                                roleName = "Admin";
-                                break;
-                        }
-                        if (!string.IsNullOrEmpty(roleName))
-                        {
-                            var role = _db.Roles.SingleOrDefault(r => r.Roles == roleName);
-                            var userRole = new UserRole
-                            {
-                                Role = role,
-                                User = user
-                            };
-                            _db.UserRoles.Add(userRole);
-
-                        }
-                        _db.SaveChanges();
-                        dbContextTransaction.Commit();
-
-
-                        return RedirectToAction("Index");
-                    }
-                    catch
-                    {
-                        dbContextTransaction.Rollback();
-                    }
+                    RedirectToAction("Index");
                 }
             }
 
             return View(user);
+        }
+
+        protected bool _CreateUser(User user)
+        {
+            using (var dbContextTransaction = _db.Database.BeginTransaction())
+            {
+                try
+                {
+                    string encodedPassword = TextEncoding.EncodeString(user.Password);
+                    user.Password = encodedPassword;
+                    user = _db.Users.Add(user);
+                    _db.SaveChanges();
+                    string roleName = "";
+                    switch (user.UserType)
+                    {
+                        case UserType.Company:
+                            roleName = "Company";
+                            break;
+                        case UserType.Customer:
+                            roleName = "Customer";
+                            break;
+                        case UserType.EStore:
+                            roleName = "Admin";
+                            break;
+                    }
+                    if (!string.IsNullOrEmpty(roleName))
+                    {
+                        var role = _db.Roles.SingleOrDefault(r => r.Roles == roleName);
+                        var userRole = new UserRole
+                        {
+                            Role = role,
+                            User = user
+                        };
+                        _db.UserRoles.Add(userRole);
+                    }
+                    _db.SaveChanges();
+                    if (user.UserType == UserType.Customer)
+                    {
+                        var customer = new Customer
+                        {
+                            User = user,
+                            Gender = Gender.Male,
+                            Nikename = user.UserName
+                        };
+                        _db.Customers.Add(customer);
+                        _db.SaveChanges();
+                    }
+                    dbContextTransaction.Commit();
+
+
+                    return true;
+
+                }
+                catch
+                {
+                    dbContextTransaction.Rollback();
+                }
+            }
+            return false;
         }
 
         [Authorize(Roles = "Admin")]

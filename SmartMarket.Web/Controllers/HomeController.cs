@@ -11,7 +11,7 @@ namespace SmartMarket.Web.Controllers
     public class HomeController : Controller
     {
         private SmartMarketDB db = new SmartMarketDB();
-
+        [Authorize(Roles = "admin,customer")]
         public ActionResult Index()
         {
             var homeModel = new HomeModel();
@@ -25,6 +25,7 @@ namespace SmartMarket.Web.Controllers
             return View(homeModel);
         }
         [HttpPost]
+        [Authorize(Roles = "admin,customer")]
         public ActionResult Index([Bind(Include = "Search")] HomeModel homeModel)
         {
 

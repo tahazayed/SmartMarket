@@ -9,11 +9,12 @@ using System.Web.Mvc;
 
 namespace SmartMarket.Web.Controllers
 {
-    [Authorize(Roles = "admin,company")]
+    [Authorize]
     public class ProductsController : Controller
     {
         private SmartMarketDB db = new SmartMarketDB();
 
+        [Authorize(Roles = "admin,company")]
         // GET: Products
         public ActionResult Index()
         {
@@ -29,7 +30,7 @@ namespace SmartMarket.Web.Controllers
             }
             return View(products.ToList());
         }
-        [AllowAnonymous]
+        [Authorize(Roles = "admin,customer")]
         public ActionResult Search(Guid? companyId, Guid? categoryId, string search = "")
         {
             IQueryable<Product> products = db.Products.Include(p => p.Company).Include(p => p.SubCategory);
@@ -53,6 +54,7 @@ namespace SmartMarket.Web.Controllers
 
             return View(products.ToList());
         }
+        [Authorize(Roles = "admin,company")]
         // GET: Products/Details/5
         public ActionResult Details(Guid? id)
         {
@@ -67,7 +69,7 @@ namespace SmartMarket.Web.Controllers
             }
             return View(product);
         }
-
+        [Authorize(Roles = "admin,company")]
         // GET: Products/Create
         public ActionResult Create()
         {
@@ -90,6 +92,7 @@ namespace SmartMarket.Web.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "admin,company")]
         public ActionResult Create([Bind(Include = "Id,ProductName,Description,SubCategoryId,CompanyId,Price,AvailableStock,Rate,ImageURL")] Product product)
         {
             if (ModelState.IsValid)
@@ -114,6 +117,7 @@ namespace SmartMarket.Web.Controllers
         }
 
         // GET: Products/Edit/5
+        [Authorize(Roles = "admin,company")]
         public ActionResult Edit(Guid? id)
         {
             if (id == null)
@@ -144,6 +148,7 @@ namespace SmartMarket.Web.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "admin,company")]
         public ActionResult Edit([Bind(Include = "Id,ProductName,Description,SubCategoryId,CompanyId,Price,AvailableStock,Rate,ImageURL")] Product product)
         {
             if (ModelState.IsValid)
@@ -166,6 +171,7 @@ namespace SmartMarket.Web.Controllers
         }
 
         // GET: Products/Delete/5
+        [Authorize(Roles = "admin,company")]
         public ActionResult Delete(Guid? id)
         {
             if (id == null)
@@ -183,6 +189,7 @@ namespace SmartMarket.Web.Controllers
         // POST: Products/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "admin,company")]
         public ActionResult DeleteConfirmed(Guid id)
         {
             Product product = db.Products.Find(id);
@@ -209,6 +216,7 @@ namespace SmartMarket.Web.Controllers
         }
 
         [HttpPost]
+        [AllowAnonymous]
         public ActionResult GetProdutPrice(Guid productId)
         {
             double pricePerItem = db.Products.SingleOrDefault(p => p.Id == productId).Price;

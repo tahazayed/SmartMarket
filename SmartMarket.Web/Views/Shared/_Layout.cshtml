@@ -51,17 +51,20 @@
 
                 </ul>
                 <ul class="nav navbar-nav" style="float: right;">
-                    <li>
+
                         @if (Request.IsAuthenticated)
                         {
-                            <strong style="display: inline-block; color: white;">@Html.Encode(User.Identity.Name)</strong>
-                            @Html.ActionLink("Sign Out", "Logout", "Users", null, new { style = "display:inline-block;" })
+                            <li>
+                                <strong style="display: inline-block; color: white;">@Html.Encode(User.Identity.Name)</strong>
+                                @Html.ActionLink("Sign Out", "Logout", "Users", null, new { style = "display:inline-block;" })
+                            </li>
                         }
                         else
                         {
-                            @Html.ActionLink("Sign In", "Login", "Users")
+                            <li> @Html.ActionLink("Sign In", "Login", "Users") </li>
+                            <li> @Html.ActionLink("Sign Up", "SignUp", "Users") </li>
                         }
-                    </li>
+
 
                 </ul>
             </div>
