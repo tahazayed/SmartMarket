@@ -31,6 +31,17 @@
             });
     };
 
+    if ($("#SearchBTN").length > 0) {
+        $('#SearchBTN')
+        .click(function (e) {
+            e.preventDefault();
+            search = $("#Search").val();
 
+            if (search.length > 0) {
+                window.location.href = "/Products/Search?companyId=&categoryId=&search=" + search;
+            }
+
+        });
+    };
 
 });
