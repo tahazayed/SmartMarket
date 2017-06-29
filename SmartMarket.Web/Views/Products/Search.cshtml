@@ -1,0 +1,33 @@
+﻿@model IEnumerable<BusinessEntities.Product>
+
+@{
+    ViewBag.Title = "Search";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Products</h2>
+<hr/>
+
+<div class="row">
+    @foreach (var item in Model)
+    {
+        <div class="col-md-4 row-fluid">
+            <img src="@item.ImageURL" width="200px" height="200px" />
+            <br />
+            <span><strong>@item.ProductName</strong></span><br />
+            Price:<span style="color: #B12704 !important;"> @item.Price  LE</span><br />
+            <a href="~/Products/Search?search=&categoryId=&companyId=@item.Id">@item.Company.CompanyName</a>
+            <br />
+            <br />
+        </div>
+
+    }
+
+
+</div>
+
+<br /><br /><br /><br />
+
+<div class="row">
+    @Html.ActionLink("Select another filter", "Index", "Home")
+</div>

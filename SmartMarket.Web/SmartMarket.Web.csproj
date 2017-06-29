@@ -209,6 +209,7 @@
     </Compile>
     <Compile Include="Helpers\TextEncoding.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\HomeModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\OrderModel.cs" />
@@ -3658,6 +3659,7 @@
     <Content Include="Pics\lentils.jpg" />
     <Content Include="Pics\pepsi_soft_drink_large_pet_2litre_1-500x500.jpg" />
     <Content Include="Pics\rani.jpg" />
+    <Content Include="Pics\search.png" />
     <Content Include="Pics\star.jpg" />
     <Content Include="Pics\startpasta.jpg" />
     <Content Include="Pics\Thermos.jpg" />
@@ -4560,6 +4562,7 @@
     <Content Include="Views\OrderItems\Index.cshtml" />
     <Content Include="Scripts\jquery-3.1.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.1.1.min.map" />
+    <Content Include="Views\Products\Search.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

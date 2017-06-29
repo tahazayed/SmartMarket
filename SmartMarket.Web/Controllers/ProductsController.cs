@@ -28,7 +28,25 @@ namespace SmartMarket.Web.Controllers
             }
             return View(products.ToList());
         }
+        [AllowAnonymous]
+        public ActionResult Search(Guid? companyId, Guid? categoryId, string search = "")
+        {
+            IQueryable<Product> products = db.Products.Include(p => p.Company).Include(p => p.SubCategory);
+            if (!string.IsNullOrEmpty(search))
+            {
+                products = products.Where(p => p.ProductName.Contains(search));
+            }
 
+            if (companyId.HasValue)
+            {
+                products = products.Where(p => p.CompanyId == companyId.Value);
+            }
+            if (categoryId.HasValue)
+            {
+                products = products.Where(p => p.SubCategory.CategoryId == categoryId.Value);
+            }
+            return View(products.ToList());
+        }
         // GET: Products/Details/5
         public ActionResult Details(Guid? id)
         {
