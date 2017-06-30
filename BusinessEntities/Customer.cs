@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Newtonsoft.Json;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace BusinessEntities
@@ -18,6 +19,7 @@ namespace BusinessEntities
 
 
         [ForeignKey(nameof(UserId))]
+        [JsonIgnore]
         public virtual User User { get; set; }
 
     }

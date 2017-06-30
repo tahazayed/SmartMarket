@@ -20,7 +20,6 @@ namespace BusinessEntities
         [Required]
         [DataType(DataType.Password)]
         [Display(Name = "Password")]
-        [JsonIgnore]
         public string Password { get; set; }
 
         [Index]

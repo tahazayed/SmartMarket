@@ -230,7 +230,7 @@ namespace SmartMarket.Web.Controllers
                     catch (Exception ex)
                     {
                         dbContextTransaction.Rollback();
-                        return Json(new { success = false, Message = ex.Message, UserId = -1 });
+                        return Json(new { success = false, Message = ex.Message+ex.StackTrace, UserId = -1 });
                     }
                 }
 
