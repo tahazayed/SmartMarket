@@ -79,6 +79,10 @@
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("Back to List", "Index")
+<p class="button">
+    @Html.ActionLink("Add to cart", "AddToCart",
+        "ShoppingCart", new { id = Model.Id }, "")|
+    <button onclick="window.history.back();">Go Back</button>
 </p>
+
+

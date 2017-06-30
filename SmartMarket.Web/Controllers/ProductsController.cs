@@ -56,7 +56,7 @@ namespace SmartMarket.Web.Controllers
 
             return View(products.ToList());
         }
-        [Authorize(Roles = "admin,company")]
+
         // GET: Products/Details/5
         public ActionResult Details(Guid? id)
         {
