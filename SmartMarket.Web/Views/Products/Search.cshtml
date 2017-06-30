@@ -34,6 +34,8 @@
             Price:<span style="color: #B12704 !important;"> @item.Price  LE</span><br />
             Category:<a href="~/Products/Search?search=&companyId=&categoryId=@item.SubCategory.Category.Id"> @item.SubCategory.Category.CategoryName</a><br />
             @Html.ActionLink("Add to cart", "AddToCart", "ShoppingCart", new { id = @item.Id }, "")<br />
+            <a href="#" class="AddToCartLink" data-id="@item.Id">+</a>
+            <a href="#" class="RemoveFromCartLink" data-id="@item.Id">-</a>
             <a href="~/Products/Search?search=&categoryId=&companyId=@item.CompanyId">@item.Company.CompanyName</a>
             <br />
             <br />
@@ -51,6 +53,6 @@
 </div>
 
 @section Scripts {
-
+    @Scripts.Render("~/Content/js/dev.js")
     @Scripts.Render("~/Content/js/dllCascade.js")
 }

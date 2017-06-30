@@ -25,6 +25,7 @@ namespace SmartMarket.Web.Controllers
         }
         //
         // GET: /Store/AddToCart/5
+        [HttpPost]
         public ActionResult AddToCart(Guid id)
         {
             // Retrieve the album from the database
@@ -36,8 +37,17 @@ namespace SmartMarket.Web.Controllers
 
             cart.AddToCart(addedAlbum);
 
-            // Go back to the main store page for more shopping
-            return RedirectToAction("Index");
+            // Display the confirmation message
+            var results = new ShoppingCartRemoveViewModel
+            {
+                Message = Server.HtmlEncode(addedAlbum.ProductName) +
+                    " has been added to your shopping cart.",
+                CartTotal = cart.GetTotal(),
+                CartCount = cart.GetCount(),
+                ItemCount = cart.GetCountByProductId(id),
+                DeleteId = id
+            };
+            return Json(results);
         }
         //
         // AJAX: /ShoppingCart/RemoveFromCart/5
@@ -48,8 +58,8 @@ namespace SmartMarket.Web.Controllers
             var cart = ShoppingCart.GetCart(this.HttpContext);
 
             // Get the name of the album to display confirmation
-            string albumName = db.Carts
-                .Single(item => item.Id == id).Product.ProductName;
+            string albumName = db.Products
+                .Single(item => item.Id == id).ProductName;
 
             // Remove from cart
             int itemCount = cart.RemoveFromCart(id);
