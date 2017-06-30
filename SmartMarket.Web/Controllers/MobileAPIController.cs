@@ -173,8 +173,8 @@ namespace SmartMarket.Web.Controllers
         }
 
         [System.Web.Http.AllowAnonymous]
-        [System.Web.Http.HttpPost]
-        public IHttpActionResult Singup([FromBody]BusinessEntities.User user)
+        //[System.Web.Http.HttpPost]
+        public IHttpActionResult Signup([FromBody]BusinessEntities.User user)
         {
 
             using (SmartMarketDB _db = new SmartMarketDB())
