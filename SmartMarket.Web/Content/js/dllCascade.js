@@ -121,4 +121,18 @@
 
                });
     };
+    var UpdateCount = function () {
+        $.post("/ShoppingCart/GetCartItems",
+                           {},
+                           function (data) {
+
+                               // Successful requests get here
+                               // Update the page elements
+                               $.each(data.lstItems, function (index) {
+                                   console.log(data.lstItems[index]);
+                                   $('#item-count-' + data.lstItems[index].ProductId).text(data.lstItems[index].Count);
+                               });
+                           });
+    };
+    UpdateCount();
 });

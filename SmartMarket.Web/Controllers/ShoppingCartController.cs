@@ -1,6 +1,7 @@
 ﻿using BusinessEntities;
 using SmartMarket.Web.Models;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
 
@@ -107,22 +108,44 @@ namespace SmartMarket.Web.Controllers
                     db.SaveChanges();
                     if (cart.CreateOrder(order) == order.Id)
                     {
-                        return Json(new { success = true, Message = "Order has been added successfully", OrderId = order.Id });
+                        return
+                            Json(new { success = true, Message = "Order has been added successfully", OrderId = order.Id });
                     }
                     db.Orders.Remove(order);
                     db.SaveChanges();
                     return Json(new { success = false, Message = "Unable to add order right now!", OrderId = -1 });
 
                 }
-                else
-                {
-                    return Json(new { success = false, Message = "Not a valid customer", OrderId = -1 });
-                }
+
+                return Json(new { success = false, Message = "Not a valid customer", OrderId = -1 });
             }
             return Json(new { success = false, Message = "The shopping cart is empty!", OrderId = -1 });
 
 
         }
+
+        [HttpPost]
+        public ActionResult GetCartItems()
+        {
+            try
+            {
+                var cart = ShoppingCart.GetCart(this.HttpContext);
+                var lstItems = cart.GetCartItems();
+                return Json(new { success = true, Message = "", lstItems = lstItems });
+            }
+            catch (Exception ex)
+            {
+
+                return Json(new
+                {
+                    success = false,
+                    Message = ex.Message,
+                    lstItems = new List<Cart>()
+                });
+            }
+
+        }
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)
