@@ -54,7 +54,7 @@ namespace SmartMarket.Web.Controllers
             if (ModelState.IsValid)
             {
                 order.Id = Guid.NewGuid();
-                db.Orders.Add(order);
+                order = db.Orders.Add(order);
                 db.SaveChanges();
                 return RedirectToAction("Edit", new { Id = order.Id });
 

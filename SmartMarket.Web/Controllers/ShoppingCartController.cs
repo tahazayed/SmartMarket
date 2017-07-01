@@ -77,14 +77,51 @@ namespace SmartMarket.Web.Controllers
             return Json(results);
         }
         //
-        // GET: /ShoppingCart/CartSummary
-        [ChildActionOnly]
-        public ActionResult CartSummary()
-        {
-            var cart = ShoppingCart.GetCart(this.HttpContext);
+        //// GET: /ShoppingCart/CartSummary
+        //[ChildActionOnly]
+        //public ActionResult CartSummary()
+        //{
+        //    var cart = ShoppingCart.GetCart(this.HttpContext);
 
-            ViewData["CartCount"] = cart.GetCount();
-            return PartialView("CartSummary");
+        //    ViewData["CartCount"] = cart.GetCount();
+        //    return PartialView("CartSummary");
+        //}
+
+        [HttpPost]
+        public ActionResult AddOrder()
+        {
+            // Remove the item from the cart
+            var cart = ShoppingCart.GetCart(this.HttpContext);
+            var lstItems = cart.GetCartItems();
+            if (lstItems.Count > 0)
+            {
+                var order = new Order();
+                var oUser = new SmartMarket.Web.Business.User();
+                long userId = oUser.GetUserId(User.Identity.Name);
+                var oCustomer = db.Customers.SingleOrDefault(c => c.UserId == userId);
+                if (oCustomer != null)
+                {
+                    order.CustomerId = oCustomer.Id;
+                    order.OrderDate = DateTime.Now;
+                    order = db.Orders.Add(order);
+                    db.SaveChanges();
+                    if (cart.CreateOrder(order) == order.Id)
+                    {
+                        return Json(new { success = true, Message = "", OrderId = order.Id });
+                    }
+                    db.Orders.Remove(order);
+                    db.SaveChanges();
+                    return Json(new { success = false, Message = "Failed to create order Items", OrderId = -1 });
+
+                }
+                else
+                {
+                    return Json(new { success = false, Message = "not a customer", OrderId = -1 });
+                }
+            }
+            return Json(new { success = false, Message = "empty cart", OrderId = -1 });
+
+
         }
         protected override void Dispose(bool disposing)
         {

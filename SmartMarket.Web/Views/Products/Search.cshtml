@@ -10,19 +10,24 @@
 @using (Html.BeginForm())
 {
     <div class="row">
-
         <div class="col-md-12">
-            Search by product<span style="color: red">*</span>:&nbsp;&nbsp;&nbsp;&nbsp;
-            <input class="form-search text-box single-line" id="Search" name="Search" placeholder="Search by product name" style="width: 70%" type="text" value="">
-            &nbsp;<input type="image" src="~/Pics/search.png" width="38" height="38" class="btn btn-default" id="SearchBTN">
-            &nbsp; @Html.DropDownList("lstCategories", ViewBag.lstCategorie as SelectList, htmlAttributes: new { @class = "form-search" })
-
+            @Html.ActionLink("Check out", "Index", "ShoppingCart")
         </div>
     </div>
-    <div class="row">
-        <br />
-        <br />
-    </div>
+        <div class="row">
+
+            <div class="col-md-12">
+                Search by product<span style="color: red">*</span>:&nbsp;&nbsp;&nbsp;&nbsp;
+                <input class="form-search text-box single-line" id="Search" name="Search" placeholder="Search by product name" style="width: 70%" type="text" value="">
+                &nbsp;<input type="image" src="~/Pics/search.png" width="38" height="38" class="btn btn-default" id="SearchBTN">
+                &nbsp; @Html.DropDownList("lstCategories", ViewBag.lstCategorie as SelectList, htmlAttributes: new { @class = "form-search" })
+
+            </div>
+        </div>
+        <div class="row">
+            <br />
+            <br />
+        </div>
 }
 <div class="row">
     @foreach (var item in Model)
@@ -33,7 +38,7 @@
             <span><strong>@item.ProductName</strong></span><br />
             Price:<span style="color: #B12704 !important;"> @item.Price  LE</span><br />
             Category:<a href="~/Products/Search?search=&companyId=&categoryId=@item.SubCategory.Category.Id"> @item.SubCategory.Category.CategoryName</a><br />
-            @Html.ActionLink("Add to cart", "AddToCart", "ShoppingCart", new { id = @item.Id }, "")<br />
+
             <a href="#" class="AddToCartLink" data-id="@item.Id">+</a>
             <a href="#" class="RemoveFromCartLink" data-id="@item.Id">-</a>
             <a href="~/Products/Search?search=&categoryId=&companyId=@item.CompanyId">@item.Company.CompanyName</a>
