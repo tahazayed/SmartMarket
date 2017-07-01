@@ -114,7 +114,7 @@
                        function (data) {
                            // Successful requests get here
                            // Update the page elements
-                           $('update-message').text(data.Message);
+                           $('#update-message').text(data.Message);
 
 
                        });
