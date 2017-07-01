@@ -72,7 +72,7 @@
                });
     };
 
-        if ($(".AddToCartLink").length > 0) {
+    if ($(".AddToCartLink").length > 0) {
         $(".AddToCartLink")
                .click(function () {
                    // Get the id from the link
@@ -95,29 +95,24 @@
                            });
                    }
                });
-        };
+    };
 
 
-        if ($(".CheckoutLink").length > 0) {
-            $(".CheckoutLink")
-                   .click(function () {
+    if ($(".CheckoutLink").length > 0) {
+        $(".CheckoutLink")
+               .click(function () {
 
-                           // Perform the ajax post
-                           $.post("/ShoppingCart/AddOrder",
-                               {},
-                               function (data) {
-                                   // Successful requests get here
-                                   // Update the page elements
-                                   if (data.OrderId !== -1) {
-                                       $('#row-' + data.DeleteId).fadeOut('slow');
-                                   } else {
-                                       $('#item-count-' + data.DeleteId).text(data.ItemCount);
-                                   }
-                                   $('#cart-total').text(data.CartTotal);
-                                   $('#update-message').text(data.Message);
-                                   $('#cart-status').text('Cart (' + data.CartCount + ')');
-                               });
+                   // Perform the ajax post
+                   $.post("/ShoppingCart/AddOrder",
+                       {},
+                       function (data) {
+                           // Successful requests get here
+                           // Update the page elements
+                           $('update-message').text(data.Message);
 
-                   });
-        };
+
+                       });
+
+               });
+    };
 });

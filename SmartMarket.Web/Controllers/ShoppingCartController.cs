@@ -107,19 +107,19 @@ namespace SmartMarket.Web.Controllers
                     db.SaveChanges();
                     if (cart.CreateOrder(order) == order.Id)
                     {
-                        return Json(new { success = true, Message = "", OrderId = order.Id });
+                        return Json(new { success = true, Message = "Order has been added successfully", OrderId = order.Id });
                     }
                     db.Orders.Remove(order);
                     db.SaveChanges();
-                    return Json(new { success = false, Message = "Failed to create order Items", OrderId = -1 });
+                    return Json(new { success = false, Message = "Unable to add order right now!", OrderId = -1 });
 
                 }
                 else
                 {
-                    return Json(new { success = false, Message = "not a customer", OrderId = -1 });
+                    return Json(new { success = false, Message = "Not a valid customer", OrderId = -1 });
                 }
             }
-            return Json(new { success = false, Message = "empty cart", OrderId = -1 });
+            return Json(new { success = false, Message = "The shopping cart is empty!", OrderId = -1 });
 
 
         }
