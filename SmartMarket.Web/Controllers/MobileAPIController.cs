@@ -138,7 +138,7 @@ namespace SmartMarket.Web.Controllers
         public IHttpActionResult GetCustomer(long userId)
         {
 
-            var customer = db.Customers.Where(c => c.UserId == userId).Include(c => User).SingleOrDefault();
+            var customer = db.Customers.Where(c => c.UserId == userId).Include(c => c.User).SingleOrDefault();
             if (customer == null)
             {
                 return NotFound();
