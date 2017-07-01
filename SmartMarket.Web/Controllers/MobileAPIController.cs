@@ -134,6 +134,22 @@ namespace SmartMarket.Web.Controllers
 
         }
         [System.Web.Http.AllowAnonymous]
+        [System.Web.Http.HttpGet]
+        public IHttpActionResult GetCustomer(long userId)
+        {
+
+            var customer = db.Customers.Where(c => c.UserId == userId).Include(c => User).SingleOrDefault();
+            if (customer == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(customer);
+
+
+
+        }
+        [System.Web.Http.AllowAnonymous]
         [System.Web.Http.HttpPost]
         public IHttpActionResult PlaceOrder([FromBody] OrderModel orderModel)
         {
@@ -142,7 +158,7 @@ namespace SmartMarket.Web.Controllers
                 using (SmartMarketDB _db = new SmartMarketDB())
                 {
 
-                    long userId = orderModel.UserId;
+                    long userId = orderModel.order.UserId;
                     var singleOrDefault = _db.Customers.Where(c => c.UserId == userId).SingleOrDefault();
                     if (singleOrDefault != null)
                     {
@@ -151,7 +167,7 @@ namespace SmartMarket.Web.Controllers
                         var order = new Order { CustomerId = customerId };
                         order = _db.Orders.Add(order);
                         _db.SaveChanges();
-                        foreach (var orderItem in orderModel.OrderItems)
+                        foreach (var orderItem in orderModel.order.OrderItems)
                         {
                             orderItem.OrderId = order.Id;
                             orderItem.PricePerItem = _db.Products.SingleOrDefault(p => p.Id == orderItem.ProductId).Price;
