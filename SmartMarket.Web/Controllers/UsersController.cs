@@ -36,7 +36,7 @@ namespace MadintyFacebook.Controllers
             }
             List<string> userRoles = (from r in _db.Roles
                                       join ur in _db.UserRoles on r.Id equals ur.RoleId
-                                      join u in _db.Users on ur.UserId equals u.Id
+                                      where ur.UserId ==id.Value
                                       select r.Roles).ToList();
             ViewBag.MemberOf = "";
             if (userRoles.Count > 0)

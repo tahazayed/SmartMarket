@@ -38,7 +38,7 @@ namespace SmartMarket.Web.Controllers
         // GET: Companies/Create
         public ActionResult Create()
         {
-            ViewBag.UserId = new SelectList(db.Users, "Id", "UserName");
+            ViewBag.UserId = new SelectList(db.Users.Where(x => x.UserType == UserType.Company), "Id", "UserName");
             return View();
         }
 

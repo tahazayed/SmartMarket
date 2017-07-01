@@ -45,6 +45,7 @@ namespace BusinessEntities.Migrations
                 UserName = "Admin",
                 IsSystem = true,
                 Email = "test@test.com",
+                UserType = UserType.EStore
             },
              new User
              {
