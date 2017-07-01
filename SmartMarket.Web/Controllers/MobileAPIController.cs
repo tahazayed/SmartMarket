@@ -36,8 +36,8 @@ namespace SmartMarket.Web.Controllers
             }
             return lstCategories.OrderBy(c => c.CategoryName);
         }
-        [CacheOutput(ClientTimeSpan = 300, ServerTimeSpan = 300)]
-        public IQueryable<Category> GetCompanyCategories(Guid companyId)
+        // [CacheOutput(ClientTimeSpan = 300, ServerTimeSpan = 300)]
+        public IQueryable<Category> GetCompanyCategories(Guid? companyId)
         {
             IQueryable<Category> lstCategories;
 
@@ -46,7 +46,7 @@ namespace SmartMarket.Web.Controllers
                              on p.SubCategoryId equals sc.Id
                              join c in db.Categories
                              on sc.CategoryId equals c.Id
-                             where p.CompanyId == companyId
+                             where p.CompanyId == companyId.Value
                              select c).Distinct();
 
 
@@ -230,7 +230,7 @@ namespace SmartMarket.Web.Controllers
                     catch (Exception ex)
                     {
                         dbContextTransaction.Rollback();
-                        return Json(new { success = false, Message = ex.Message+ex.StackTrace, UserId = -1 });
+                        return Json(new { success = false, Message = ex.Message + ex.StackTrace, UserId = -1 });
                     }
                 }
 
