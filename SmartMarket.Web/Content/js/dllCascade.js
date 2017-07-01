@@ -59,10 +59,13 @@
                            function (data) {
                                // Successful requests get here
                                // Update the page elements
-                               if (data.ItemCount == 0) {
-                                   $('#row-' + data.DeleteId).fadeOut('slow');
-                               } else {
-                                   $('#item-count-' + data.DeleteId).text(data.ItemCount);
+                               $('#item-count-' + data.DeleteId).text(data.ItemCount);
+                               if (data.ItemCount === 0) {
+
+                                   if ($('#row-' + data.DeleteId).length > 0) {
+                                       $('#row-' + data.DeleteId).fadeOut('slow');
+                                   }
+
                                }
                                $('#cart-total').text(data.CartTotal);
                                $('#update-message').text(data.Message);
@@ -84,10 +87,13 @@
                            function (data) {
                                // Successful requests get here
                                // Update the page elements
-                               if (data.ItemCount == 0) {
-                                   $('#row-' + data.DeleteId).fadeOut('slow');
-                               } else {
-                                   $('#item-count-' + data.DeleteId).text(data.ItemCount);
+                               $('#item-count-' + data.DeleteId).text(data.ItemCount);
+                               if (data.ItemCount === 0) {
+
+                                   if ($('#row-' + data.DeleteId).length > 0) {
+                                       $('#row-' + data.DeleteId).fadeOut('slow');
+                                   }
+
                                }
                                $('#cart-total').text(data.CartTotal);
                                $('#update-message').text(data.Message);
