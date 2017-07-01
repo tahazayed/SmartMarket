@@ -8,7 +8,6 @@ namespace BusinessEntities
         [Required]
         [StringLength(40, MinimumLength = 2)]
         [Index]
-
         public string CategoryName { get; set; }
 
         [StringLength(250)]

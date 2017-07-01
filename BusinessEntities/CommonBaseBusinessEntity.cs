@@ -9,13 +9,5 @@ namespace BusinessEntities
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public Guid Id { get; set; } = Guid.NewGuid();
-
-        //public DateTime CreationDate { get; set; } = DateTime.Now;
-
-        //public DateTime LastUpdated { get; set; } = DateTime.Now;
-
-        //[ConcurrencyCheck]
-        //[Timestamp]
-        //public byte[] RowVersion { get; set; }
     }
 }
