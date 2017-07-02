@@ -231,11 +231,22 @@ namespace SmartMarket.Web.Controllers
 
                     foreach (var orderItem in lstItems)
                     {
-                        var tempProducts = (from oi in _db.OrderItems
-                                            where oi.ProductId == orderItem.ProductId
-                                            select oi.Product
-                        ).Include(p=>p.Company).Include(p => p.SubCategory).Include(p => p.SubCategory.Category).ToList();
-                        lstProducts.AddRange(tempProducts);
+                        var orders = (from oi in _db.OrderItems
+                                      where oi.ProductId == orderItem.ProductId
+                                      select oi.Order
+                        ).ToList();
+
+                        foreach (var order in orders)
+                        {
+                            var tempProducts = (from oi in _db.OrderItems
+                                                where oi.OrderId == order.Id
+                                                select oi.Product
+                                ).Include(p => p.Company)
+                                .Include(p => p.SubCategory)
+                                .Include(p => p.SubCategory.Category)
+                                .ToList();
+                            lstProducts.AddRange(tempProducts);
+                        }
                     }
                     foreach (var product in lstProducts)
                     {
@@ -248,7 +259,7 @@ namespace SmartMarket.Web.Controllers
 
                 }
             }
-            catch {}
+            catch { }
             return lstProductsFinal.Distinct().ToList();
 
         }
