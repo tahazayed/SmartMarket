@@ -3,6 +3,7 @@ using SmartMarket.Web.Business;
 using SmartMarket.Web.Helpers;
 using SmartMarket.Web.Models;
 using System;
+using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Web;
@@ -167,10 +168,24 @@ namespace SmartMarket.Web.Controllers
                         var order = new Order { CustomerId = customerId };
                         order = _db.Orders.Add(order);
                         _db.SaveChanges();
-                        foreach (var orderItem in orderModel.OrderItems)
+                        List<OrderItem> lstItems = new List<OrderItem>();
+                        foreach (var cartOrderItem in orderModel.OrderItems)
                         {
-                            orderItem.OrderId = order.Id;
-                            orderItem.PricePerItem = _db.Products.SingleOrDefault(p => p.Id == orderItem.ProductId).Price;
+                            var orderItemIndex = lstItems.FindIndex(i => i.ProductId == cartOrderItem.ProductId);
+                            if (orderItemIndex > -1)
+                            {
+                                lstItems[orderItemIndex].Count += cartOrderItem.Count;
+                            }
+                            else
+                            {
+                                cartOrderItem.OrderId = order.Id;
+                                cartOrderItem.PricePerItem = _db.Products.SingleOrDefault(p => p.Id == cartOrderItem.ProductId).Price;
+                                lstItems.Add(cartOrderItem);
+                            }
+                        }
+                        foreach (var orderItem in lstItems)
+                        {
+
                             _db.OrderItems.Add(orderItem);
                         }
                         _db.SaveChanges();
@@ -185,6 +200,56 @@ namespace SmartMarket.Web.Controllers
 
                 return Json(new { success = false, Message = ex.Message, OrderId = -1 });
             }
+
+        }
+        [System.Web.Http.AllowAnonymous]
+        [System.Web.Http.HttpPost]
+        public List<Product> GetRecommendations([FromBody] OrderModel orderModel)
+        {
+            List<Product> lstProducts = new List<Product>();
+            List<Product> lstProductsFinal = new List<Product>();
+            try
+            {
+                using (SmartMarketDB _db = new SmartMarketDB())
+                {
+
+                    long userId = orderModel.UserId;
+
+                    List<OrderItem> lstItems = new List<OrderItem>();
+                    foreach (var cartOrderItem in orderModel.OrderItems)
+                    {
+                        var orderItemIndex = lstItems.FindIndex(i => i.ProductId == cartOrderItem.ProductId);
+                        if (orderItemIndex > -1)
+                        {
+                            lstItems[orderItemIndex].Count += cartOrderItem.Count;
+                        }
+                        else
+                        {
+                            lstItems.Add(cartOrderItem);
+                        }
+                    }
+
+                    foreach (var orderItem in lstItems)
+                    {
+                        var tempProducts = (from oi in _db.OrderItems
+                                            where oi.ProductId == orderItem.ProductId
+                                            select oi.Product
+                        ).Include(p=>p.Company).Include(p => p.SubCategory).Include(p => p.SubCategory.Category).ToList();
+                        lstProducts.AddRange(tempProducts);
+                    }
+                    foreach (var product in lstProducts)
+                    {
+                        var productIndex = lstItems.FindIndex(i => i.ProductId == product.Id);
+                        if (productIndex == -1)
+                        {
+                            lstProductsFinal.Add(product);
+                        }
+                    }
+
+                }
+            }
+            catch {}
+            return lstProductsFinal.Distinct().ToList();
 
         }
 
