@@ -158,7 +158,7 @@ namespace SmartMarket.Web.Controllers
                 using (SmartMarketDB _db = new SmartMarketDB())
                 {
 
-                    long userId = orderModel.order.UserId;
+                    long userId = orderModel.UserId;
                     var singleOrDefault = _db.Customers.Where(c => c.UserId == userId).SingleOrDefault();
                     if (singleOrDefault != null)
                     {
@@ -167,7 +167,7 @@ namespace SmartMarket.Web.Controllers
                         var order = new Order { CustomerId = customerId };
                         order = _db.Orders.Add(order);
                         _db.SaveChanges();
-                        foreach (var orderItem in orderModel.order.OrderItems)
+                        foreach (var orderItem in orderModel.OrderItems)
                         {
                             orderItem.OrderId = order.Id;
                             orderItem.PricePerItem = _db.Products.SingleOrDefault(p => p.Id == orderItem.ProductId).Price;
